@@ -200,13 +200,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     }
 
+    if (keycode == EX_PARM) {
+      /*SEND_STRING("Safety dance!");*/
+      /*tap_code16(S(KC_9));*/
+      /*tap_code16(S(KC_0));*/
+      /*SEND_STRING(SS_LSFT("90"));*/
+      /*SEND_STRING("90");*/
+      SEND_STRING("()"SS_TAP(X_LEFT));
+      return false;
+    }
+
     if (keycode == EX_PAR) {
+      /*SEND_STRING("Safety dance!");*/
+      /*tap_code16(S(KC_9));*/
+      /*tap_code16(S(KC_0));*/
+      /*SEND_STRING(SS_LSFT("90"));*/
+      /*SEND_STRING("90");*/
       SEND_STRING("()");
       return false;
     }
 
     if (keycode == EX_INSP) {
       SEND_STRING("IO.inspect(");
+      return false;
+    }
+
+    if (keycode == EX_INSM) {
+      SEND_STRING("IO.inspect(label: \"\")"SS_TAP(X_LEFT)SS_TAP(X_LEFT));
       return false;
     }
 

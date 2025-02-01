@@ -232,11 +232,16 @@ evelyn: | qmk
 
 .PHONY: madeline
 madeline: | qmk
-	mkdir -p ${QMK_HOME}/keyboards/kiserdesigns/madeline
-	rsync -avz firmware/kiserdesigns/madeline/ ${QMK_HOME}/keyboards/kiserdesigns/madeline/
+	mkdir -p ${QMK_HOME}/keyboards/madeline
+	rsync -avz firmware/madeline/ ${QMK_HOME}/keyboards/madeline/
+
+.PHONY: m0ii0_alpha
+m0ii0_alpha: | qmk
+	mkdir -p ${QMK_HOME}/keyboards/m0ii0_alpha
+	rsync -avz firmware/m0ii0_alpha/ ${QMK_HOME}/keyboards/m0ii0_alpha/
 
 .PHONY: firmware
-firmware: | twoyo-default minisub-default kawaii-default relic-default caravan2 menhir agony piedmont oxymoron ca66r3 curio alphalpha-plus 45_ats_hot plop embrace apricot sst60 orbital m0ii040pcb cutiepie paintbrush_avr bully monorail monorail2 cisne 3999 bully2040 grouper c11 serendipity haitun2040 infernum cool536lc qezberry oc3anograph3r cuticle qaz_rp2040 tk40x syndrome denali le_chiffre_32 rescue_truck alphawilly evelyn
+firmware: | twoyo-default minisub-default kawaii-default relic-default caravan2 menhir agony piedmont oxymoron ca66r3 curio alphalpha-plus 45_ats_hot plop embrace apricot sst60 orbital m0ii040pcb cutiepie paintbrush_avr bully monorail monorail2 cisne 3999 bully2040 grouper c11 serendipity haitun2040 infernum cool536lc qezberry oc3anograph3r cuticle qaz_rp2040 tk40x syndrome denali le_chiffre_32 rescue_truck alphawilly evelyn madeline m0ii0_alpha
 	echo firmware
 
 .PHONY: keymaps

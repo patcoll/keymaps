@@ -21,7 +21,7 @@ DEFERRED_EXEC_ENABLE  = no
 # DYNAMIC_MACRO_ENABLE  = no
 # DYNAMIC_TAPPING_TERM_ENABLE = no
 EXTRAKEY_ENABLE       = yes
-# GRAVE_ESC_ENABLE      = no
+GRAVE_ESC_ENABLE      = no
 # HAPTIC_ENABLE         = no
 # HD44780_ENABLE        = no
 # JOYSTICK_ENABLE       = no
@@ -29,6 +29,7 @@ EXTRAKEY_ENABLE       = yes
 KEY_OVERRIDE_ENABLE   = no
 # LEADER_ENABLE         = no
 # LED_MATRIX_ENABLE     = no
+MAGIC_ENABLE          = no
 # MIDI_ENABLE           = no
 MOUSEKEY_ENABLE       = yes
 NKRO_ENABLE           = no
@@ -44,7 +45,7 @@ OS_DETECTION_ENABLE   = no
 # SECURE_ENABLE         = no
 # SEND_STRING_ENABLE    = yes
 # SEQUENCER_ENABLE      = no
-# SPACE_CADET_ENABLE    = no
+SPACE_CADET_ENABLE    = no
 # SPLIT_KEYBOARD        = no
 # ST7565_ENABLE         = no
 # STENO_ENABLE          = no
@@ -74,4 +75,3 @@ endif
 ifneq ($(PLATFORM),CHIBIOS)
 	LTO_ENABLE        = yes
 endif
-

@@ -59,8 +59,10 @@ enum userspace_custom_keycodes {
   EX_BARR,
   EX_ARR,
   EX_DARR,
+  EX_PARM,
   EX_PAR,
   EX_INSP,
+  EX_INSM,
   EX_SEAR,
 
   NEW_SAFE_RANGE
