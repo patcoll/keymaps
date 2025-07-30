@@ -12,9 +12,6 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     //
     // Do this for any combo letter combinations that may NOT be more prevalent
     // in everyday typing.
-    case jk_combo:
-      return COMBO_TERM + 8;
-
     case mk_combo:
       return COMBO_TERM + 3;
 
