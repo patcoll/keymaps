@@ -95,6 +95,11 @@ sst60: | qmk
 	mkdir -p ${QMK_HOME}/keyboards/sst60
 	rsync -avz firmware/sst60/ ${QMK_HOME}/keyboards/sst60/
 
+.PHONY: sst80
+sst80: | qmk
+	mkdir -p ${QMK_HOME}/keyboards/sst80
+	rsync -avz firmware/sst80/ ${QMK_HOME}/keyboards/sst80/
+
 .PHONY: orbital
 orbital: | qmk
 	mkdir -p ${QMK_HOME}/keyboards/orbital
