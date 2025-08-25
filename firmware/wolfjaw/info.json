@@ -1,0 +1,69 @@
+{
+    "keyboard_name": "Wolfjaw",
+    "manufacturer": "Whitefacemountain",
+    "url": "",
+    "maintainer": "qmk",
+    "usb": {
+        "vid": "0xFEED",
+        "pid": "0x0000",
+        "device_version": "1.0.0"
+    },
+    "processor": "RP2040",
+    "bootloader": "rp2040",
+    "matrix_pins": {
+        "rows": ["GP0", "GP1", "GP14", "GP19"],
+        "cols": ["GP20", "GP13", "GP12", "GP11", "GP10", "GP8", "GP7", "GP6", "GP5", "GP4", "GP3", "GP2"]
+    },
+    "diode_direction": "COL2ROW",
+
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"label": "K00 (GP0,GP20)", "matrix": [0, 0], "x": 0, "y": 0},
+                {"label": "K01 (GP0,GP13)", "matrix": [0, 1], "x": 1, "y": 0},
+                {"label": "K02 (GP0,GP12)", "matrix": [0, 2], "x": 2, "y": 0},
+                {"label": "K03 (GP0,GP11)", "matrix": [0, 3], "x": 3, "y": 0},
+                {"label": "K04 (GP0,GP10)", "matrix": [0, 4], "x": 4, "y": 0},
+                {"label": "K05 (GP0,GP8)", "matrix": [0, 5], "x": 5, "y": 0},
+                {"label": "K06 (GP0,GP7)", "matrix": [0, 6], "x": 6, "y": 0},
+                {"label": "K07 (GP0,GP6)", "matrix": [0, 7], "x": 7, "y": 0},
+                {"label": "K08 (GP0,GP5)", "matrix": [0, 8], "x": 8, "y": 0},
+                {"label": "K09 (GP0,GP4)", "matrix": [0, 9], "x": 9, "y": 0},
+                {"label": "K0A (GP0,GP3)", "matrix": [0, 10], "x": 10, "y": 0},
+                {"label": "K0B (GP0,GP2)", "matrix": [0, 11], "x": 11, "y": 0},
+                {"label": "K10 (GP1,GP20)", "matrix": [1, 0], "x": 0, "y": 1},
+                {"label": "K11 (GP1,GP13)", "matrix": [1, 1], "x": 1, "y": 1},
+                {"label": "K12 (GP1,GP12)", "matrix": [1, 2], "x": 2, "y": 1},
+                {"label": "K13 (GP1,GP11)", "matrix": [1, 3], "x": 3, "y": 1},
+                {"label": "K14 (GP1,GP10)", "matrix": [1, 4], "x": 4, "y": 1},
+                {"label": "K15 (GP1,GP8)", "matrix": [1, 5], "x": 5, "y": 1},
+                {"label": "K16 (GP1,GP7)", "matrix": [1, 6], "x": 6, "y": 1},
+                {"label": "K17 (GP1,GP6)", "matrix": [1, 7], "x": 7, "y": 1},
+                {"label": "K18 (GP1,GP5)", "matrix": [1, 8], "x": 8, "y": 1},
+                {"label": "K19 (GP1,GP4)", "matrix": [1, 9], "x": 9, "y": 1},
+		{"label": "K1A (GP1,GP3)", "matrix": [1, 10], "x": 10, "y": 1},
+                {"label": "K1B (GP1,GP2)", "matrix": [1, 11], "x": 11, "y": 1},
+                {"label": "K20 (GP14,GP20)", "matrix": [2, 0], "x": 0, "y": 2, "w": 1.5},
+                {"label": "K21 (GP14,GP13)", "matrix": [2, 1], "x": 1.5, "y": 2},
+                {"label": "K22 (GP14,GP12)", "matrix": [2, 2], "x": 2.5, "y": 2},
+                {"label": "K23 (GP14,GP11)", "matrix": [2, 3], "x": 3.5, "y": 2},
+                {"label": "K24 (GP14,GP10)", "matrix": [2, 4], "x": 4.5, "y": 2},
+                {"label": "K25 (GP14,GP8)", "matrix": [2, 5], "x": 5.5, "y": 2},
+                {"label": "K26 (GP14,GP7)", "matrix": [2, 6], "x": 6.5, "y": 2},
+                {"label": "K27 (GP14,GP6)", "matrix": [2, 7], "x": 7.5, "y": 2},
+                {"label": "K28 (GP14,GP5)", "matrix": [2, 8], "x": 8.5, "y": 2},
+                {"label": "K29 (GP14,GP4)", "matrix": [2, 9], "x": 9.5, "y": 2},
+		{"label": "K2B (GP14,GP2)", "matrix": [2, 11], "x": 10.5, "y": 2, "w": 1.5},
+                {"label": "K30 (GP19,GP20)", "matrix": [3, 0], "x": 0, "y": 3, "w": 1.25},
+                {"label": "K31 (GP19,GP13)", "matrix": [3, 1], "x": 1.25, "y": 3},
+                {"label": "K32 (GP19,GP12)", "matrix": [3, 2], "x": 2.25, "y": 3, "w": 1.25},
+                {"label": "K34 (GP19,GP10)", "matrix": [3, 4], "x": 3.5, "y": 3, "w": 2.75},
+                {"label": "K35",             "matrix": [3, 5], "x": 6.25, "y": 3, "w": 2.25},
+                {"label": "K37 (GP19,GP6)", "matrix": [3, 7], "x": 8.5, "y": 3, "w": 1.25},
+                {"label": "K38 (GP19,GP5)", "matrix": [3, 8], "x": 9.75, "y": 3},
+                {"label": "K3B (GP19,GP2)", "matrix": [3, 11], "x": 10.75, "y": 3, "w": 1.25}
+
+           ]
+        }
+    }
+}
