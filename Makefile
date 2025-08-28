@@ -255,8 +255,13 @@ wolfjaw: | qmk
 	mkdir -p ${QMK_HOME}/keyboards/wolfjaw
 	rsync -avz firmware/wolfjaw/ ${QMK_HOME}/keyboards/wolfjaw/
 
+.PHONY: oracle
+oracle: | qmk
+	mkdir -p ${QMK_HOME}/keyboards/oracle
+	rsync -avz firmware/oracle/ ${QMK_HOME}/keyboards/oracle/
+
 .PHONY: firmware
-firmware: | twoyo-default minisub-default kawaii-default relic-default caravan2 menhir agony piedmont oxymoron ca66r3 curio alphalpha-plus 45_ats_hot plop embrace apricot sst60 sst80 orbital m0ii040pcb cutiepie paintbrush_avr bully monorail monorail2 cisne 3999 bully2040 grouper c11 serendipity haitun2040 infernum cool536lc qezberry oc3anograph3r cuticle qaz_rp2040 tk40x syndrome denali le_chiffre_32 rescue_truck alphawilly evelyn madeline m0ii0_alpha eightu wolfjaw
+firmware: | twoyo-default minisub-default kawaii-default relic-default caravan2 menhir agony piedmont oxymoron ca66r3 curio alphalpha-plus 45_ats_hot plop embrace apricot sst60 sst80 orbital m0ii040pcb cutiepie paintbrush_avr bully monorail monorail2 cisne 3999 bully2040 grouper c11 serendipity haitun2040 infernum cool536lc qezberry oc3anograph3r cuticle qaz_rp2040 tk40x syndrome denali le_chiffre_32 rescue_truck alphawilly evelyn madeline m0ii0_alpha eightu wolfjaw oracle
 	echo firmware
 
 .PHONY: keymaps
