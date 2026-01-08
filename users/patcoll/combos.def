@@ -72,6 +72,8 @@ COMB(dfo_combo,     EX_PARM,        KC_D, KC_F, KC_O)
 COMB(dfop_combo,    EX_PAR,         KC_D, KC_F, KC_O, KC_P)
 COMB(dfp_combo,     EX_SEAR,        KC_D, KC_F, KC_P)
 
+COMB(jkc_combo,     EX_COMP,        KC_J, KC_K, ALT_C)
+
 #ifdef PATCOLL_ALPHA_COMBOS
 COMB(dfm_combo,     EX_PIPE,        KC_D, KC_F, KC_M)
 #endif

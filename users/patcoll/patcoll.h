@@ -64,6 +64,7 @@ enum userspace_custom_keycodes {
   EX_INSP,
   EX_INSM,
   EX_SEAR,
+  EX_COMP,
 
   NEW_SAFE_RANGE
 };
