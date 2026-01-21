@@ -1,0 +1,9 @@
+[project]
+name = "keymaps"
+version = "0.1.0"
+description = "my qmk keymaps"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "qmk>=1.2.0",
+]

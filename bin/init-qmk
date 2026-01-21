@@ -13,4 +13,9 @@
 
 # qmk clone -b 0.26.8 qmk/qmk_firmware ${QMK_HOME} # 2024-08-30, started acting up with mods not triggering consistently or correctly on NAV layer, downgraded to test out
 
-qmk clone -b vial vial-kb/vial-qmk ${QMK_HOME}
+# qmk clone -b vial vial-kb/vial-qmk ${QMK_HOME}
+
+qmk clone -b 0.31.9 qmk/qmk_firmware ${QMK_HOME}
+
+# Install QMK firmware Python dependencies into uv venv
+uv pip install -r ${QMK_HOME}/requirements.txt
