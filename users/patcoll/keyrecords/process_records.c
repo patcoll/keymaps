@@ -73,9 +73,9 @@ void matrix_scan_user(void) {
 void set_mac_mode(bool is_mac_mode) {
   mac_mode = is_mac_mode;
 
-  keymap_config.raw = eeconfig_read_keymap();
+  eeconfig_read_keymap(&keymap_config);
   keymap_config.swap_lalt_lgui = keymap_config.swap_ralt_rgui = mac_mode;
-  eeconfig_update_keymap(keymap_config.raw);
+  eeconfig_update_keymap(&keymap_config);
 
 #ifdef CONSOLE_ENABLE
   xprintf("mac_mode: %d\n", mac_mode);
