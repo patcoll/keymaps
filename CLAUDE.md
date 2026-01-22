@@ -23,6 +23,9 @@ keymaps/
 - `users/` - Shared user code (macros, combos, tap behaviors, etc.).
 - `$QMK_HOME` (keymaps_qmk/) - Working copy of QMK firmware. Gets cloned from upstream, then files from `firmware/` and `keyboards/` are copied in during setup.
 
+**Key files:**
+- `keymaps` - Canonical list of keyboards we care about. Used by build system.
+
 ## Setup
 
 This project uses `uv` for Python dependency management and `mise` for task automation.
