@@ -51,8 +51,8 @@ The `init-qmk` script will:
 
 Use `mise run <task>` to execute:
 
-- **`mise run setup`** - Initialize QMK environment (run after clean)
-- **`mise run clean`** - Clean build artifacts
+- **`mise run setup`** - Initialize QMK environment (run after teardown)
+- **`mise run teardown`** - Tear down QMK environment (requires setup to rebuild)
 - **`mise run qmk <command>`** - Run any QMK CLI command in $QMK_HOME
 
 ### Examples
@@ -83,16 +83,16 @@ mise run qmk flash -kb <keyboard> -km <keymap>
 
 ## Important Build Rules
 
-**CRITICAL**: Always run `mise run setup` after `mise run clean`. The setup command initializes the QMK environment and is required for builds to work.
+**CRITICAL**: Always run `mise run setup` after `mise run teardown`. The setup command initializes the QMK environment and is required for builds to work.
 
 ```bash
 # Correct workflow
-mise run clean
+mise run teardown
 mise run setup    # REQUIRED after clean
 mise run qmk compile -kb <keyboard> -km <keymap>
 
 # Incorrect - will fail
-mise run clean
+mise run teardown
 mise run qmk compile -kb <keyboard> -km <keymap>  # ERROR: build will not work
 ```
 
