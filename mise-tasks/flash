@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Flash QMK firmware to keyboard"
-#MISE dir="{{env.QMK_HOME}}"
-
-uv run qmk flash "$@"

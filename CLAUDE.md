@@ -51,31 +51,34 @@ The `init-qmk` script will:
 
 Use `mise run <task>` to execute:
 
-### Build Tasks (run in keymaps folder)
+- **`mise run setup`** - Initialize QMK environment (run after clean)
+- **`mise run clean`** - Clean build artifacts
+- **`mise run qmk <command>`** - Run any QMK CLI command in $QMK_HOME
 
-- **`mise run setup`** - Run QMK setup (`make`)
-- **`mise run clean`** - Clean build artifacts (`make clean`)
+### Examples
 
-### QMK Tasks (run in QMK_HOME folder)
+```bash
+# Compile firmware
+mise run qmk compile -kb lazydesigners/apricot -km patcoll
 
-- **`mise run compile`** - Compile QMK firmware
-  ```bash
-  mise run compile -kb lazydesigners/apricot -km patcoll
-  ```
+# Flash firmware to keyboard
+mise run qmk flash -kb lazydesigners/apricot -km patcoll
 
-- **`mise run flash`** - Flash firmware to keyboard
-  ```bash
-  mise run flash -kb lazydesigners/apricot -km patcoll
-  ```
+# List available keyboards
+mise run qmk list-keyboards
+
+# Get keyboard info
+mise run qmk info -kb lazydesigners/apricot
+```
 
 ## Daily Workflow
 
 ```bash
 # Compile your keymap
-mise run compile -kb <keyboard> -km <keymap>
+mise run qmk compile -kb <keyboard> -km <keymap>
 
 # Flash to keyboard
-mise run flash -kb <keyboard> -km <keymap>
+mise run qmk flash -kb <keyboard> -km <keymap>
 ```
 
 ## Important Build Rules
@@ -86,11 +89,11 @@ mise run flash -kb <keyboard> -km <keymap>
 # Correct workflow
 mise run clean
 mise run setup    # REQUIRED after clean
-mise run compile -kb <keyboard> -km <keymap>
+mise run qmk compile -kb <keyboard> -km <keymap>
 
 # Incorrect - will fail
 mise run clean
-mise run compile -kb <keyboard> -km <keymap>  # ERROR: build will not work
+mise run qmk compile -kb <keyboard> -km <keymap>  # ERROR: build will not work
 ```
 
 ## Keyboard Migrations

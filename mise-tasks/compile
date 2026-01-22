@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Compile QMK firmware"
-#MISE dir="{{env.QMK_HOME}}"
-
-uv run qmk compile "$@"
