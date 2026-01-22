@@ -290,7 +290,7 @@ enum userspace_custom_keycodes {
 #define __________MEDIA_L3_FOUR___________                _______, _______, OS_MENU, TO(_QWERTY)
 #define _________________MEDIA_L3__________________       __________MEDIA_L3_FOUR___________, _______
 
-#define _________________MEDIA_R1__________________       RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI
+#define _________________MEDIA_R1__________________       UG_TOGG, UG_NEXT, UG_HUEU, UG_SATU, UG_VALU
 #define __________MEDIA_R2_FOUR___________                KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 #define _________________MEDIA_R2__________________       __________MEDIA_R2_FOUR___________, _______
 #define __MEDIA_R3_TWO__                                  OS_MENU, OS_MENU
@@ -302,15 +302,15 @@ enum userspace_custom_keycodes {
 // Mouse
 #define _________________MOUSE_L1__________________       KC_RCTL, KC_NO,   KC_NO,   KC_NO,   KC_NO
 #define _________________MOUSE_L2__________________       KC_CPI1, KC_CPI2, KC_CPI3, KC_CPI4, KC_NO
-#define __________MOUSE_L3_FOUR___________                _______, KC_BTN2, KC_BTN1, TO(_QWERTY)
+#define __________MOUSE_L3_FOUR___________                _______, MS_BTN2, MS_BTN1, TO(_QWERTY)
 #define _________________MOUSE_L3__________________       __________MOUSE_L3_FOUR___________, KC_NO
 
-#define _________________MOUSE_R1__________________       KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NO
-#define __________MOUSE_R2_FOUR___________                KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R
+#define _________________MOUSE_R1__________________       MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, KC_NO
+#define __________MOUSE_R2_FOUR___________                MS_LEFT, MS_DOWN, MS_UP, MS_RGHT
 #define _________________MOUSE_R2__________________       __________MOUSE_R2_FOUR___________, KC_NO
-#define __________MOUSE_R3_FOUR___________                KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R
+#define __________MOUSE_R3_FOUR___________                MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR
 #define _________________MOUSE_R3__________________       __________MOUSE_R3_FOUR___________, KC_NO
-#define _________________MOUSE_R3_ARROWS___________       KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_MS_U
-#define                __MOUSE_R3_ARROW_KEYS__                                       KC_MS_L, KC_MS_D, KC_MS_R
+#define _________________MOUSE_R3_ARROWS___________       MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, MS_UP
+#define                __MOUSE_R3_ARROW_KEYS__                                       MS_LEFT, MS_DOWN, MS_RGHT
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
