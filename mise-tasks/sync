@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+#MISE description="Sync firmware and keymaps for one keyboard to QMK_HOME"
+#MISE usage="sync <keyboard>"
+#MISE arg="keyboard"
+
+set -e
+
+kb="$1"
+dir="$PWD"
+
+if [ -z "$kb" ]; then
+  echo "Usage: mise run sync <keyboard>"
+  echo "Example: mise run sync handwired/patcoll/agony"
+  exit 1
+fi
+
+# Sync firmware if available
+if [ -d "firmware/$kb" ]; then
+  # Find the Makefile target for this keyboard
+  target=$(grep -B3 "firmware/$kb/" Makefile | grep "^\.PHONY:" | sed 's/\.PHONY: //')
+
+  if [ -z "$target" ]; then
+    echo "Warning: No Makefile target found for '$kb', skipping firmware sync"
+  else
+    echo "Syncing firmware for $kb (target: $target)..."
+    make "$target"
+  fi
+else
+  echo "No custom firmware for $kb, skipping firmware sync"
+fi
+
+# Sync keymaps for this keyboard
+echo ""
+echo "Syncing keymaps for $kb..."
+
+found_keymap=false
+
+# Find all entries in keymaps file that start with this keyboard
+grep -E "^$kb( |$)" keymaps | while read -r line; do
+  # Skip empty lines and comments
+  if [[ "${line:0:1}" = "" || "${line:0:1}" = "#" || "${line:0:2}" = "//" ]]; then
+    continue
+  fi
+
+  build_keyboard=$(echo "$line" | awk '{print $1}')
+  build_keymap=$(echo "$line" | awk '{print $2}')
+  build_keymap="${build_keymap:-patcoll}"
+
+  keymap="keyboards/$build_keyboard/keymaps/$build_keymap"
+
+  num_slashes=$(echo "$build_keyboard" | grep -o '/' | wc -l)
+
+  # Walk up the path to find the keymap directory
+  while [[ ! -d "$dir/$keymap" ]]; do
+    if [[ $num_slashes = 0 ]]; then
+      echo "Warning: keymap $keymap not found, skipping"
+      continue 2
+    fi
+
+    build_keyboard=$(echo "$build_keyboard" | cut -d'/' -f-$((num_slashes)))
+    keymap="keyboards/$build_keyboard/keymaps/$build_keymap"
+    ((num_slashes--))
+  done
+
+  echo "  Linking $keymap -> ${QMK_HOME}/$keymap"
+  mkdir -p "$(dirname "${QMK_HOME}/$keymap")"
+  ln -nfs "$dir/$keymap" "${QMK_HOME}/$keymap"
+done
+
+echo ""
+echo "Done."

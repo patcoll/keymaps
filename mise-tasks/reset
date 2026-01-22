@@ -12,17 +12,16 @@ if [ -z "$kb" ]; then
   echo "Example: mise run reset handwired/patcoll/agony"
   echo ""
   echo "Keyboards with custom firmware:"
-  mise run firmware
+  mise run firmware:list
   exit 1
 fi
 
-if [ ! -d "firmware/$kb" ]; then
-  echo "Error: No custom firmware found for '$kb'"
-  echo ""
-  echo "This command only works for keyboards with firmware in firmware/"
+# Validate keyboard is in firmware task output
+if ! mise run firmware:list | grep -qx "$kb"; then
+  echo "Error: '$kb' is not a valid keyboard with custom firmware"
   echo ""
   echo "Keyboards with custom firmware:"
-  mise run firmware
+  mise run firmware:list
   exit 1
 fi
 
@@ -32,8 +31,8 @@ if [ -d "$target" ]; then
   echo "Removing $target"
   rm -rf "$target"
 else
-  echo "Warning: $target does not exist (will be created by setup)"
+  echo "Warning: $target does not exist (will be created by sync)"
 fi
 
-echo "Running setup..."
-mise run setup
+echo "Syncing..."
+mise run sync "$kb"
