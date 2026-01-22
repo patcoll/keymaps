@@ -28,7 +28,7 @@ keymaps/
 
 To get the list of keyboards with custom firmware (keyboards in `keymaps` that have firmware in `firmware/`):
 ```bash
-mise run firmware
+mise run firmware:list
 ```
 
 ## Setup
