@@ -24,7 +24,7 @@ See CLAUDE.md for migration guide.
 - [ ] embrace
 - [ ] grouper
 - [ ] haitun2040
-- [ ] handwired/patcoll/agony
+- [x] handwired/patcoll/agony
 - [ ] handwired/patcoll/piedmont
 - [ ] infernum
 - [ ] kawaii

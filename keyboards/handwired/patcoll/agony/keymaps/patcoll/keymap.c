@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MOUSE] = LAYOUT_wrapper(
   _________________MOUSE_L1__________________, _________________MOUSE_R1__________________,
   _________________MOUSE_L2__________________, __________MOUSE_R2_FOUR___________,
-  _________________MOUSE_L3__________________, KC_BTN1, KC_BTN2,
-  _______, KC_BTN1,                   KC_BTN1, KC_BTN2
+  _________________MOUSE_L3__________________, MS_BTN1, MS_BTN2,
+  _______, MS_BTN1,                   MS_BTN1, MS_BTN2
 ),
 };
