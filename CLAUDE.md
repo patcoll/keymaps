@@ -61,6 +61,7 @@ Use `mise run <task>` to execute:
 
 - **`mise run setup`** - Initialize QMK environment (run after teardown)
 - **`mise run teardown`** - Tear down QMK environment (requires setup to rebuild)
+- **`mise run reset <keyboard>`** - Reset a keyboard's firmware in QMK_HOME (only for keyboards with custom firmware in `firmware/`)
 - **`mise run qmk <command>`** - Run any QMK CLI command in $QMK_HOME
 
 ### Examples

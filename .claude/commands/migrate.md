@@ -50,8 +50,8 @@ Remove: `info.json`, `config.h`, `rules.mk`
 ### Step 4: Validate
 
 ```bash
-# Run setup to copy firmware to QMK_HOME
-mise run setup
+# Reset keyboard in QMK_HOME (clears and re-copies from firmware/)
+mise run reset $ARGUMENTS.keyboard
 
 # Check JSON syntax
 python3 -m json.tool firmware/$ARGUMENTS.keyboard/keyboard.json
@@ -74,3 +74,4 @@ Mark the keyboard as complete in MIGRATION_CHECKLIST.md.
 
 - If compilation fails due to old keycodes, check CLAUDE.md for the keycode migration table
 - The `firmware/` directory is the canonical source - changes here will be copied to $QMK_HOME during setup
+- Use `mise run reset <keyboard>` to clear legacy files from QMK_HOME that rsync doesn't remove

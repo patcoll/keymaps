@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+#MISE description="Reset a keyboard's firmware in QMK_HOME (only for keyboards with custom firmware)"
+#MISE usage="reset <keyboard>"
+#MISE arg="keyboard"
+
+set -e
+
+kb="$1"
+
+if [ -z "$kb" ]; then
+  echo "Usage: mise run reset <keyboard>"
+  echo "Example: mise run reset handwired/patcoll/agony"
+  echo ""
+  echo "Keyboards with custom firmware:"
+  mise run firmware
+  exit 1
+fi
+
+if [ ! -d "firmware/$kb" ]; then
+  echo "Error: No custom firmware found for '$kb'"
+  echo ""
+  echo "This command only works for keyboards with firmware in firmware/"
+  echo ""
+  echo "Keyboards with custom firmware:"
+  mise run firmware
+  exit 1
+fi
+
+target="$QMK_HOME/keyboards/$kb"
+
+if [ -d "$target" ]; then
+  echo "Removing $target"
+  rm -rf "$target"
+else
+  echo "Warning: $target does not exist (will be created by setup)"
+fi
+
+echo "Running setup..."
+mise run setup
