@@ -28,7 +28,6 @@ See CLAUDE.md for migration guide.
 - [ ] handwired/patcoll/piedmont
 - [ ] infernum
 - [ ] kawaii
-- [ ] kiserdesigns/madeline
 - [x] lazydesigners/apricot
 - [ ] lazydesigners/tk40x
 - [ ] m0ii0_alpha
