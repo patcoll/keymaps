@@ -26,6 +26,11 @@ keymaps/
 **Key files:**
 - `keymaps` - Canonical list of keyboards we care about. Used by build system.
 
+To get the list of keyboards with custom firmware (keyboards in `keymaps` that have firmware in `firmware/`):
+```bash
+mise run firmware
+```
+
 ## Setup
 
 This project uses `uv` for Python dependency management and `mise` for task automation.
