@@ -42,7 +42,7 @@ See CLAUDE.md for migration guide.
 - [x] nachie/syndrome
 - [x] oc3anograph3r
 - [x] oracle
-- [ ] orbital
+- [x] orbital
 - [ ] oxymoron
 - [ ] paintbrush_avr
 - [ ] plop
