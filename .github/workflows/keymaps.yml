@@ -161,6 +161,8 @@ jobs:
     needs: [build]
     if: always()
     runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.list.outputs.files }}
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -169,7 +171,11 @@ jobs:
           merge-multiple: true
 
       - name: List firmware files
-        run: ls -la firmware/
+        id: list
+        run: |
+          files=$(ls firmware/ 2>/dev/null | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+          echo "Found files: $files"
 
       - uses: actions/upload-artifact@v4
         with:
@@ -180,3 +186,24 @@ jobs:
         uses: geekyeggo/delete-artifact@v5
         with:
           name: firmware-batch-*
+
+  upload-individual:
+    needs: [collect]
+    if: always() && needs.collect.outputs.files != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file: ${{ fromJson(needs.collect.outputs.files) }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: firmware
+
+      - name: Get artifact name
+        id: name
+        run: echo "name=$(echo '${{ matrix.file }}' | sed 's/\.[^.]*$//')" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.name.outputs.name }}
+          path: ${{ matrix.file }}
