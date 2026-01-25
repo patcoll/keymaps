@@ -8,11 +8,11 @@ arguments:
 
 # Migrate Keyboard to keyboard.json Format
 
-Migrate `$ARGUMENTS.keyboard` from legacy format (info.json + config.h + rules.mk) to modern keyboard.json format for QMK 0.31.9+ compatibility.
+Migrate `$ARGUMENTS` from legacy format (info.json + config.h + rules.mk) to modern keyboard.json format for QMK 0.31.9+ compatibility.
 
 ## Pre-flight Checks
 
-1. Verify the keyboard exists in `firmware/$ARGUMENTS.keyboard`
+1. Verify the keyboard exists in `firmware/$ARGUMENTS`
 2. Check if already migrated (keyboard.json exists and no legacy files)
 3. Read the existing legacy files to understand the current configuration
 
@@ -51,19 +51,19 @@ Remove: `info.json`, `config.h`, `rules.mk`
 
 ```bash
 # Reset keyboard in QMK_HOME (removes then re-syncs from firmware/)
-mise run reset $ARGUMENTS.keyboard
+mise run reset $ARGUMENTS
 
 # Check JSON syntax
-python3 -m json.tool firmware/$ARGUMENTS.keyboard/keyboard.json
+python3 -m json.tool firmware/$ARGUMENTS/keyboard.json
 
 # Verify keyboard is recognized
-mise run qmk list-keyboards | grep $ARGUMENTS.keyboard
+mise run qmk list-keyboards | grep $ARGUMENTS
 
 # Check configuration
-mise run qmk info -kb $ARGUMENTS.keyboard
+mise run qmk info -kb $ARGUMENTS
 
 # Test compile (find keymap from keymaps file or use default)
-mise run qmk compile -kb $ARGUMENTS.keyboard -km <keymap>
+mise run qmk compile -kb $ARGUMENTS -km <keymap>
 ```
 
 ### Step 5: Update Checklist
