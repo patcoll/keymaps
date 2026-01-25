@@ -29,13 +29,20 @@ jobs:
         id: set-matrix
         run: |
           # Parse keymaps file into JSON array of {keyboard, keymap, artifact_name} objects
+          # then batch them into groups of 10
           keyboards=$(grep -v '^#' keymaps | grep -v '^//' | grep -v '^$' | while read -r line; do
             kb=$(echo "$line" | awk '{print $1}')
             km=$(echo "$line" | awk '{print $2}')
             km="${km:-patcoll}"
             artifact_name=$(echo "${kb}-${km}" | tr '/' '_')
             echo "{\"keyboard\":\"$kb\",\"keymap\":\"$km\",\"artifact_name\":\"$artifact_name\"}"
-          done | jq -s -c '.')
+          done | jq -s -c '
+            # Split into batches of 10
+            [range(0; length; 10) as $i | {
+              batch_id: ($i / 10 | floor),
+              keyboards: .[$i:$i+10]
+            }]
+          ')
           echo "keyboards=$keyboards" >> "$GITHUB_OUTPUT"
 
   setup:
@@ -122,15 +129,22 @@ jobs:
           cd ${{ github.workspace }}/working_area/qmk_firmware
           sudo util/qmk_install.sh -y
 
-      - name: Sync keyboard
-        run: mise run sync "${{ matrix.keyboard }}"
-
-      - name: Build ${{ matrix.keyboard }}
-        run: mise run qmk compile -kb "${{ matrix.keyboard }}" -km "${{ matrix.keymap }}"
+      - name: Sync and build keyboards
+        env:
+          KEYBOARDS_JSON: ${{ toJson(matrix.keyboards) }}
+        run: |
+          echo "$KEYBOARDS_JSON" | jq -c '.[]' | while read -r item; do
+            keyboard=$(echo "$item" | jq -r '.keyboard')
+            keymap=$(echo "$item" | jq -r '.keymap')
+            echo "::group::Building $keyboard:$keymap"
+            mise run sync "$keyboard"
+            mise run qmk compile -kb "$keyboard" -km "$keymap"
+            echo "::endgroup::"
+          done
 
       - uses: actions/upload-artifact@v4
         with:
-          name: firmware-${{ matrix.artifact_name }}
+          name: firmware-batch-${{ matrix.batch_id }}
           path: |
             ${{ github.workspace }}/*.bin
             ${{ github.workspace }}/*.hex
