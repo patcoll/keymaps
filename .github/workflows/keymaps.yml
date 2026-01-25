@@ -37,8 +37,37 @@ jobs:
           done | jq -s -c '.')
           echo "keyboards=$keyboards" >> "$GITHUB_OUTPUT"
 
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mise
+        uses: jdx/mise-action@v3
+
+      - name: Cache QMK firmware
+        id: cache-qmk
+        uses: actions/cache@v4
+        with:
+          path: working_area/qmk_firmware
+          key: qmk-${{ hashFiles('mise-tasks/setup') }}
+
+      - name: Install QMK CLI
+        if: steps.cache-qmk.outputs.cache-hit != 'true'
+        run: python3 -m pip install qmk
+
+      - name: Setup QMK
+        if: steps.cache-qmk.outputs.cache-hit != 'true'
+        run: mise run setup
+
+      - name: Install QMK build dependencies
+        if: steps.cache-qmk.outputs.cache-hit != 'true'
+        run: |
+          cd ${{ github.workspace }}/working_area/qmk_firmware
+          sudo util/qmk_install.sh -y
+
   build:
-    needs: [lint, matrix]
+    needs: [lint, matrix, setup]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -51,11 +80,15 @@ jobs:
       - name: Install mise
         uses: jdx/mise-action@v3
 
+      - name: Restore QMK firmware cache
+        uses: actions/cache@v4
+        with:
+          path: working_area/qmk_firmware
+          key: qmk-${{ hashFiles('mise-tasks/setup') }}
+          fail-on-cache-miss: true
+
       - name: Install QMK CLI
         run: python3 -m pip install qmk
-
-      - name: Setup QMK
-        run: mise run setup
 
       - name: Install QMK build dependencies
         run: |
