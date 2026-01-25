@@ -16,22 +16,21 @@
         "rows": ["B14", "B15", "B10", "B13"]
     },
     "encoder": {
-      "rotary": [
-        {"pin_a": "B3", "pin_b": "A15"},
-        {"pin_a": "B4", "pin_b": "B5"},
-        {"pin_a": "B8", "pin_b": "B9"},
-        {"pin_a": "B11", "pin_b": "B12"},
-        {"pin_a": "B6", "pin_b": "B7"}
-      ]
+        "rotary": [
+            {"pin_a": "B3", "pin_b": "A15"},
+            {"pin_a": "B4", "pin_b": "B5"},
+            {"pin_a": "B8", "pin_b": "B9"},
+            {"pin_a": "B11", "pin_b": "B12"},
+            {"pin_a": "B6", "pin_b": "B7"}
+        ]
     },
     "features": {
         "bootmagic": true,
         "encoder": true,
         "extrakey": true,
         "mousekey": true,
-        "nkro": true,
+        "nkro": true
     },
-
     "layouts": {
         "LAYOUT": {
             "layout": [
@@ -72,7 +71,7 @@
                 { "matrix": [2, 9], "x": 9.75, "y": 2 },
                 { "matrix": [2, 11], "x": 11, "y": 2.25 },
                 { "matrix": [2, 12], "x": 12.25, "y": 2 },
-                { "matrix": [3, 0], "w": 1.5,"x": 0, "y": 3 },
+                { "matrix": [3, 0], "w": 1.5, "x": 0, "y": 3 },
                 { "matrix": [3, 1], "w": 1.5, "x": 1.75, "y": 3.25 },
                 { "matrix": [3, 2], "w": 2, "x": 3.25, "y": 3.25 },
                 { "matrix": [3, 5], "x": 5.25, "y": 3.25 },

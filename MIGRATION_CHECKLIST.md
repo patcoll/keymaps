@@ -15,12 +15,12 @@ See CLAUDE.md for migration guide.
 - [x] ca66r3
 - [x] caravan2
 - [x] cisne
-- [ ] cool536lc
-- [ ] curio
-- [ ] cuticle
-- [ ] cutiepie
-- [ ] denali
-- [ ] eightu
+- [x] cool536lc
+- [x] curio
+- [x] cuticle
+- [x] cutiepie
+- [x] denali
+- [x] eightu
 - [ ] embrace
 - [ ] grouper
 - [ ] haitun2040
