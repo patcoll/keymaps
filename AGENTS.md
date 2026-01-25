@@ -262,3 +262,7 @@ To switch QMK firmware versions:
    ```
 
 This will re-clone the firmware at the new version and re-sync all keyboards.
+
+## CI Notes
+
+The GitHub Actions workflow (`.github/workflows/keymaps.yml`) uses `awalsh128/cache-apt-pkgs-action` to cache apt packages for faster builds. The `qmk_install.sh` step in build jobs is commented out because the cache action already installs the packages. If builds fail due to missing dependencies, uncomment that step.
