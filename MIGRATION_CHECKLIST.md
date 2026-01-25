@@ -14,7 +14,7 @@ See CLAUDE.md for migration guide.
 - [x] bully2040
 - [x] ca66r3
 - [x] caravan2
-- [ ] cisne
+- [x] cisne
 - [ ] cool536lc
 - [ ] curio
 - [ ] cuticle
