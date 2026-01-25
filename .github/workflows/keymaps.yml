@@ -133,16 +133,23 @@ jobs:
         env:
           KEYBOARDS_JSON: ${{ toJson(matrix.keyboards) }}
         run: |
+          failed=0
           echo "$KEYBOARDS_JSON" | jq -c '.[]' | while read -r item; do
             keyboard=$(echo "$item" | jq -r '.keyboard')
             keymap=$(echo "$item" | jq -r '.keymap')
             echo "::group::Building $keyboard:$keymap"
-            mise run sync "$keyboard"
-            mise run qmk compile -kb "$keyboard" -km "$keymap"
+            if ! mise run sync "$keyboard" || ! mise run qmk compile -kb "$keyboard" -km "$keymap"; then
+              echo "::error::Failed to build $keyboard:$keymap"
+              echo "1" > /tmp/build_failed
+            fi
             echo "::endgroup::"
           done
+          if [ -f /tmp/build_failed ]; then
+            exit 1
+          fi
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: firmware-batch-${{ matrix.batch_id }}
           path: |
