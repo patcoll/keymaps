@@ -45,7 +45,7 @@ See CLAUDE.md for migration guide.
 - [x] orbital
 - [x] oxymoron
 - [x] paintbrush_avr
-- [ ] plop
+- [x] plop
 - [ ] qaz_rp2040
 - [ ] qezberry
 - [ ] relic
