@@ -27,7 +27,7 @@ See CLAUDE.md for migration guide.
 - [x] handwired/patcoll/agony
 - [x] handwired/patcoll/piedmont
 - [x] infernum
-- [ ] kawaii
+- [x] kawaii
 - [x] lazydesigners/apricot
 - [ ] lazydesigners/tk40x
 - [ ] m0ii0_alpha
