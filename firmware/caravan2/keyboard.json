@@ -1,0 +1,97 @@
+{
+    "keyboard_name": "CaraVan 2",
+    "maintainer": "TheVan Keyboards",
+    "manufacturer": "TheVan Keyboards",
+    "url": "",
+    "processor": "atmega32u4",
+    "bootloader": "atmel-dfu",
+    "usb": {
+        "vid": "0xFEAE",
+        "pid": "0x8847",
+        "device_version": "0.0.1",
+        "max_power": 100,
+        "no_startup_check": true
+    },
+    "diode_direction": "ROW2COL",
+    "features": {
+        "audio": false,
+        "bluetooth": false,
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "midi": false,
+        "mousekey": true,
+        "nkro": true,
+        "rgblight": true
+    },
+    "backlight": {
+        "levels": 1
+    },
+    "rgblight": {
+        "animations": {
+            "breathing": true
+        },
+        "max_brightness": 255,
+        "sleep": true,
+        "led_count": 20
+    },
+    "ws2812": {
+        "pin": "F0"
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"matrix": [0, 0], "x": 0, "y": 0},
+                {"matrix": [0, 1], "x": 1, "y": 0},
+                {"matrix": [0, 2], "x": 2, "y": 0},
+                {"matrix": [0, 3], "x": 3, "y": 0},
+                {"matrix": [0, 4], "x": 4, "y": 0},
+                {"matrix": [0, 5], "x": 5, "y": 0},
+                {"matrix": [0, 8], "x": 7, "y": 0},
+                {"matrix": [0, 9], "x": 8, "y": 0},
+                {"matrix": [0, 10], "x": 9, "y": 0},
+                {"matrix": [0, 11], "x": 10, "y": 0},
+                {"matrix": [0, 12], "x": 11, "y": 0},
+                {"matrix": [0, 13], "x": 12, "y": 0},
+
+                {"matrix": [1, 0], "x": 0, "y": 1},
+                {"matrix": [1, 1], "x": 1, "y": 1},
+                {"matrix": [1, 2], "x": 2, "y": 1},
+                {"matrix": [1, 3], "x": 3, "y": 1},
+                {"matrix": [1, 4], "x": 4, "y": 1},
+                {"matrix": [1, 5], "x": 5, "y": 1},
+                {"matrix": [1, 8], "x": 7, "y": 1},
+                {"matrix": [1, 9], "x": 8, "y": 1},
+                {"matrix": [1, 10], "x": 9, "y": 1},
+                {"matrix": [1, 11], "x": 10, "y": 1},
+                {"matrix": [1, 12], "x": 11, "y": 1},
+                {"matrix": [1, 13], "x": 12, "y": 1},
+
+                {"matrix": [2, 0], "x": 0, "y": 2},
+                {"matrix": [2, 1], "x": 1, "y": 2},
+                {"matrix": [2, 2], "x": 2, "y": 2},
+                {"matrix": [2, 3], "x": 3, "y": 2},
+                {"matrix": [2, 4], "x": 4, "y": 2},
+                {"matrix": [2, 5], "x": 5, "y": 2},
+                {"matrix": [2, 8], "x": 7, "y": 2},
+                {"matrix": [2, 9], "x": 8, "y": 2},
+                {"matrix": [2, 10], "x": 9, "y": 2},
+                {"matrix": [2, 11], "x": 10, "y": 2},
+                {"matrix": [2, 12], "x": 11, "y": 2},
+                {"matrix": [2, 13], "x": 12, "y": 2},
+
+                {"matrix": [0, 6], "x": 1, "y": 3},
+                {"matrix": [1, 6], "x": 2, "y": 3},
+                {"matrix": [2, 6], "x": 3, "y": 3},
+                {"matrix": [2, 7], "x": 4, "y": 3},
+                {"matrix": [1, 7], "x": 5, "y": 3},
+                {"matrix": [0, 14], "x": 7, "y": 3},
+                {"matrix": [1, 14], "x": 8, "y": 3},
+                {"matrix": [2, 14], "x": 9, "y": 3},
+                {"matrix": [2, 15], "x": 10, "y": 3},
+                {"matrix": [1, 15], "x": 11, "y": 3}
+            ]
+        }
+    }
+}

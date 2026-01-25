@@ -1,25 +1,3 @@
-# MCU = atmega32u4
-# BOOTLOADER = atmel-dfu
-F_CPU = 16000000
-ARCH = AVR8
-F_USB = 16000000
-
-OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
-OPT_DEFS += -DBOOTLOADER_SIZE=4096
-
-
-# NO_USB_STARTUP_CHECK = yes
-# MOUSEKEY_ENABLE = yes
-# EXTRAKEY_ENABLE = yes
-
-
-
-# NKRO_ENABLE = yes
-
-# RGBLIGHT_ENABLE = yes
+# Custom matrix with multiplexer
 CUSTOM_MATRIX = lite
-
-# MIDI_ENABLE = no
-# AUDIO_ENABLE = no
-# BLUETOOTH_ENABLE = no
 SRC += matrix.c

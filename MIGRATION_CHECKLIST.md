@@ -13,7 +13,7 @@ See CLAUDE.md for migration guide.
 - [x] bully
 - [x] bully2040
 - [x] ca66r3
-- [ ] caravan2
+- [x] caravan2
 - [ ] cisne
 - [ ] cool536lc
 - [ ] curio
