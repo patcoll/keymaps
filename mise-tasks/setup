@@ -2,11 +2,6 @@
 set -euo pipefail
 #MISE description="Set up QMK environment"
 
-if [[ -d "${QMK_HOME}" ]]; then
-  echo "${QMK_HOME}" already seems to exist
-  exit 0
-fi
-
 # qmk clone vial-kb/vial-qmk -b rp2040
 
 # qmk clone -b vial vial-kb/vial-qmk ${QMK_HOME}
@@ -23,7 +18,13 @@ fi
 
 # qmk clone -b vial vial-kb/vial-qmk ${QMK_HOME}
 
-qmk clone -b 0.31.9 qmk/qmk_firmware "${QMK_HOME}"
+if [[ ! -d "${QMK_HOME}" ]]; then
+  qmk clone -b 0.31.9 qmk/qmk_firmware "${QMK_HOME}"
+else
+  echo "${QMK_HOME}" already seems to exist
+fi
+
+uv venv
 
 # Install QMK firmware Python dependencies into uv venv
 uv pip install -r "${QMK_HOME}/requirements.txt"
