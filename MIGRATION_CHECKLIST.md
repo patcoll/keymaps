@@ -39,7 +39,7 @@ See CLAUDE.md for migration guide.
 - [x] monorail
 - [x] monorail2
 - [x] nachie/evelyn
-- [ ] nachie/syndrome
+- [x] nachie/syndrome
 - [ ] oc3anograph3r
 - [ ] oracle
 - [ ] orbital

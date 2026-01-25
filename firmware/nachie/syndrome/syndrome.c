@@ -18,10 +18,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 led_config_t g_led_config = { {
-    { NO_LED, 6, 5, 4, NO_LED, 3, 2, 1, 0, NO_LED, NO_LED },
-    { 7,  NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED,  15 },
-    { 8  , 9, NO_LED, 10, 11, 12, NO_LED, 13, 14,  NO_LED },
-    { NO_LED,  NO_LED,  NO_LED, NO_LED, NO_LED, NO_LED, NO_LED }
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED },
+    { NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED, NO_LED }
 }, {
     { 183,0 }, { 162,0 }, { 142,0 }, { 122,0 }, { 81,0 }, { 61,0 }, { 40,0 },
     { 20,16 }, { 40,48 },
