@@ -33,8 +33,8 @@ See CLAUDE.md for migration guide.
 - [x] m0ii0_alpha
 - [x] m0ii040pcb
 - [x] madeline
-- [ ] matthewdias/rescue_truck
-- [ ] menhir
+- [x] matthewdias/rescue_truck
+- [x] menhir
 - [ ] minisub
 - [ ] monorail
 - [ ] monorail2
