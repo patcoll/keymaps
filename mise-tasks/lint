@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#MISE description="Lint shell scripts with shellcheck"
 set -euo pipefail
 
 find bin mise-tasks -type f -executable -exec shellcheck {} +
