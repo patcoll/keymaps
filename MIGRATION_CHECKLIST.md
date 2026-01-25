@@ -21,7 +21,7 @@ See CLAUDE.md for migration guide.
 - [x] cutiepie
 - [x] denali
 - [x] eightu
-- [ ] embrace
+- [x] embrace
 - [ ] grouper
 - [ ] haitun2040
 - [x] handwired/patcoll/agony
