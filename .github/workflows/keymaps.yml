@@ -207,3 +207,13 @@ jobs:
         with:
           name: ${{ steps.name.outputs.name }}
           path: ${{ matrix.file }}
+
+  cleanup:
+    needs: [upload-individual]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete firmware artifact
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: firmware
