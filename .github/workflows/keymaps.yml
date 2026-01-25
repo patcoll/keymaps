@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,6 +17,39 @@ jobs:
 
       - name: Lint shell scripts
         run: mise run lint
+
+  matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      keyboards: ${{ steps.set-matrix.outputs.keyboards }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate build matrix
+        id: set-matrix
+        run: |
+          # Parse keymaps file into JSON array of {keyboard, keymap} objects
+          keyboards=$(grep -v '^#' keymaps | grep -v '^//' | grep -v '^$' | while read -r line; do
+            kb=$(echo "$line" | awk '{print $1}')
+            km=$(echo "$line" | awk '{print $2}')
+            km="${km:-patcoll}"
+            echo "{\"keyboard\":\"$kb\",\"keymap\":\"$km\"}"
+          done | jq -s -c '.')
+          echo "keyboards=$keyboards" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: [lint, matrix]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        include: ${{ fromJson(needs.matrix.outputs.keyboards) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mise
+        uses: jdx/mise-action@v3
 
       - name: Install QMK CLI
         run: python3 -m pip install qmk
@@ -29,15 +62,15 @@ jobs:
           cd ${{ github.workspace }}/working_area/qmk_firmware
           sudo util/qmk_install.sh -y
 
-      - name: Sync keyboards
-        run: mise run sync-all
+      - name: Sync keyboard
+        run: mise run sync "${{ matrix.keyboard }}"
 
-      - name: Build keymaps
-        run: mise run test
+      - name: Build ${{ matrix.keyboard }}
+        run: mise run qmk compile -kb "${{ matrix.keyboard }}" -km "${{ matrix.keymap }}"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: patcoll-firmware
+          name: firmware-${{ matrix.keyboard }}-${{ matrix.keymap }}
           path: |
             ${{ github.workspace }}/*.bin
             ${{ github.workspace }}/*.hex
