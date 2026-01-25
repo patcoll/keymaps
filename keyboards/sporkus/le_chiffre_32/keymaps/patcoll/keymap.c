@@ -89,8 +89,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [_QWERTY] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [_GAMING] =   { ENCODER_CCW_CW(RGB_HUD, RGB_HUI) },
-    [_NAV] =   { ENCODER_CCW_CW(RGB_VAD, RGB_VAI) },
+    [_GAMING] =   { ENCODER_CCW_CW(RM_HUED, RM_HUEU) },
+    [_NAV] =   { ENCODER_CCW_CW(RM_VALD, RM_VALU) },
     [_OSK] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [_RAISE] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [_MEDIA] =   { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },

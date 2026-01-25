@@ -50,7 +50,7 @@ See CLAUDE.md for migration guide.
 - [x] qezberry
 - [x] relic
 - [x] serendipity
-- [ ] sporkus/le_chiffre_32
+- [x] sporkus/le_chiffre_32
 - [ ] sst60
 - [ ] sst80
 - [ ] twoyo
