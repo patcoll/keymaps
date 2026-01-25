@@ -41,7 +41,7 @@ See CLAUDE.md for migration guide.
 - [x] nachie/evelyn
 - [x] nachie/syndrome
 - [x] oc3anograph3r
-- [ ] oracle
+- [x] oracle
 - [ ] orbital
 - [ ] oxymoron
 - [ ] paintbrush_avr

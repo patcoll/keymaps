@@ -1,14 +1,19 @@
 {
-    "manufacturer": "mechvault",
     "keyboard_name": "Oracle",
+    "manufacturer": "mechvault",
+    "url": "https://qmk.fm/keyboards",
     "maintainer": "projectcain",
+    "processor": "RP2040",
     "bootloader": "rp2040",
+    "usb": {
+        "vid": "0x0013",
+        "pid": "0x4D46",
+        "device_version": "0.0.1"
+    },
     "diode_direction": "COL2ROW",
-    "encoder": {
-        "enabled": true,
-        "rotary": [
-            {"pin_a": "GP13", "pin_b": "GP15"}
-        ]
+    "matrix_pins": {
+        "cols": ["GP7", "GP18", "GP17", "GP29", "GP6", "GP5", "GP4", "GP3", "GP2", "GP1", "GP26"],
+        "rows": ["GP24", "GP23", "GP22", "GP0", "GP25"]
     },
     "features": {
         "bootmagic": true,
@@ -20,12 +25,39 @@
         "rgblight": false,
         "rgb_matrix": true
     },
-    "matrix_pins": {
-        "cols": ["GP7", "GP18", "GP17", "GP29", "GP6", "GP5", "GP4", "GP3", "GP2", "GP1", "GP26"],
-        "rows": ["GP24", "GP23", "GP22", "GP0", "GP25"]
+    "build": {
+        "lto": true
     },
-
+    "qmk": {
+        "locking": {
+            "enabled": true,
+            "resync": true
+        },
+        "tap_keycode_delay": 10
+    },
+    "encoder": {
+        "rotary": [
+            {"pin_a": "GP13", "pin_b": "GP15"}
+        ]
+    },
+    "ws2812": {
+        "pin": "GP16",
+        "driver": "vendor"
+    },
     "rgb_matrix": {
+        "driver": "ws2812",
+        "led_count": 29,
+        "default": {
+            "animation": "cycle_all",
+            "val": 32,
+            "speed": 32
+        },
+        "react_on_keydown": true,
+        "sleep": true,
+        "hue_steps": 4,
+        "sat_steps": 4,
+        "val_steps": 4,
+        "max_brightness": 255,
         "animations": {
             "alphas_mods": true,
             "band_pinwheel_sat": true,
@@ -101,27 +133,7 @@
             {"flags": 4, "matrix": [4, 0], "x": 6, "y": 225},
             {"flags": 4, "matrix": [3, 0], "x": 6, "y": 180},
             {"flags": 4, "matrix": [3, 0], "x": 6, "y": 135}
-        ],
-        "driver": "ws2812",
-        "hue_steps": 4,
-        "max_brightness": 255,
-        "sat_steps": 4,
-        "val_steps": 4
- },
-
-    "ws2812": {
-    "pin": "GP16",
-    "driver": "vendor"
-},
-    "processor": "RP2040",
-    "qmk": {
-        "tap_keycode_delay": 10
-    },
-    "url": "https://qmk.fm/keyboards",
-    "usb": {
-        "device_version": "0.0.1",
-        "pid": "0x4D46",
-        "vid": "0x0013"
+        ]
     },
     "layouts": {
         "LAYOUT": {
@@ -130,11 +142,11 @@
                 {"matrix": [0, 1], "x": 1.5, "y": 0},
                 {"matrix": [0, 2], "x": 2.5, "y": 0},
                 {"matrix": [0, 3], "x": 3.5, "y": 0},
-                {"matrix": [0, 4], "x": 5, "y": 0},
-                {"matrix": [0, 5], "x": 6.5, "y": 0},
-                {"matrix": [0, 6], "x": 7.5, "y": 0},
-                {"matrix": [0, 7], "x": 8.5, "y": 0},
-                {"matrix": [0, 8], "x": 9.5, "y": 0},
+                {"matrix": [0, 5], "x": 5, "y": 0},
+                {"matrix": [0, 7], "x": 7.5, "y": 0},
+                {"matrix": [0, 8], "x": 8.5, "y": 0},
+                {"matrix": [0, 9], "x": 9.5, "y": 0},
+                {"matrix": [0, 10], "x": 10.5, "y": 0},
 
                 {"matrix": [1, 0], "x": 0, "y": 1},
                 {"matrix": [1, 1], "x": 1, "y": 1},
@@ -148,7 +160,6 @@
                 {"matrix": [1, 9], "x": 9, "y": 1},
                 {"matrix": [1, 10], "x": 10, "y": 1},
 
-
                 {"matrix": [2, 0], "x": 0, "y": 2},
                 {"matrix": [2, 1], "x": 1, "y": 2},
                 {"matrix": [2, 2], "x": 2, "y": 2},
@@ -159,7 +170,7 @@
                 {"matrix": [2, 7], "x": 7, "y": 2},
                 {"matrix": [2, 8], "x": 8, "y": 2},
                 {"matrix": [2, 9], "x": 9, "y": 2},
-                {"matrix": [2, 10], "x":10, "y": 2},
+                {"matrix": [2, 10], "x": 10, "y": 2},
 
                 {"matrix": [3, 0], "x": 0, "y": 3},
                 {"matrix": [3, 1], "x": 1, "y": 3},
@@ -171,7 +182,7 @@
                 {"matrix": [3, 7], "x": 7, "y": 3},
                 {"matrix": [3, 8], "x": 8, "y": 3},
                 {"matrix": [3, 9], "x": 9, "y": 3},
-                {"matrix": [3, 10], "x": 9, "y": 3},
+                {"matrix": [3, 10], "x": 10, "y": 3},
 
                 {"matrix": [4, 1], "x": 0.5, "y": 4, "w": 1.5},
                 {"matrix": [4, 3], "x": 2.5, "y": 4.25, "w": 1.25},
