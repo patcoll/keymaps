@@ -8,7 +8,7 @@ See CLAUDE.md for migration guide.
 
 - [x] 3999
 - [x] 45_ats_hot
-- [ ] alphalpha_plus
+- [x] alphalpha_plus
 - [ ] alphawilly
 - [ ] bully
 - [ ] bully2040

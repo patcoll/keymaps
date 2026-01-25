@@ -18,16 +18,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 #include "quantum.h"
-
-#define LAYOUT( \
-  K000, K001, K002, K003, K004, K005, K006, K007, K008, K009, \
-  K100, K101, K102, K103, K104, K105, K106, K107, K108, K109, \
-        K201, K202, K203, K204, K205, K206, K207, K208, K209, \
-              K302, K303, K304, K305, K306, K307, K308 \
-) \
-{ \
-  { K000, K001, K002, K003, K004, K005, K006, K007, K008, K009 }, \
-  { K100, K101, K102, K103, K104, K105, K106, K107, K108, K109 }, \
-  { KC_NO, K201, K202, K203, K204, K205, K206, K207, K208, K209 }, \
-  { KC_NO, KC_NO, K302, K303, K304, K305, K306, K307, K308, KC_NO } \
-}
