@@ -15,15 +15,9 @@
  */
 
 #include QMK_KEYBOARD_H
+#include "patcoll.h"
 
-enum layers {
-  _QWERTY,
-  _LOWER,
-  _RAISE,
-  _NAV,
-  _MOUSE
-};
-
+#undef CTL_ESC
 #define CTL_ESC LCTL_T(KC_ESC)
 #define CTL_ENT LCTL_T(KC_ENT)
 #define LT3_Z LT(_NAV, KC_Z)
@@ -67,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_MOUSE] = LAYOUT_grid(
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, UG_TOGG, UG_NEXT, UG_HUEU, UG_SATU, UG_VALU, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, MS_LEFT, MS_DOWN, MS_UP, MS_RGHT, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, MS_UP, _______,
   _______, _______, _______, MS_BTN1, MS_BTN1, MS_BTN1, MS_BTN1, _______, _______, _______, MS_BTN1, MS_BTN1, MS_BTN2, MS_BTN2, MS_LEFT, MS_DOWN, MS_RGHT
