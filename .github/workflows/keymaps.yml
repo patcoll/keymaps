@@ -67,9 +67,6 @@ jobs:
       max-parallel: 8
       matrix:
         include: ${{ fromJson(needs.matrix.outputs.keyboards) }}
-    env:
-      QMK_HOME: ${{ github.workspace }}/working_area/qmk_firmware
-      QMK_USERSPACE: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v4
 
@@ -81,12 +78,16 @@ jobs:
           fail-on-cache-miss: true
 
       - name: Sync keyboard
+        env:
+          QMK_HOME: ${{ github.workspace }}/working_area/qmk_firmware
+          QMK_USERSPACE: ${{ github.workspace }}
         run: ./mise-tasks/sync "${{ matrix.keyboard }}"
 
       - name: Build ${{ matrix.keyboard }}
-        run: |
-          cd "$QMK_HOME"
-          qmk compile -kb "${{ matrix.keyboard }}" -km "${{ matrix.keymap }}"
+        env:
+          QMK_HOME: ${{ github.workspace }}/working_area/qmk_firmware
+          QMK_USERSPACE: ${{ github.workspace }}
+        run: qmk compile -kb "${{ matrix.keyboard }}" -km "${{ matrix.keymap }}"
 
       - uses: actions/upload-artifact@v4
         with:
