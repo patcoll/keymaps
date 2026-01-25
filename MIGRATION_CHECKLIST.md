@@ -53,6 +53,6 @@ See CLAUDE.md for migration guide.
 - [x] sporkus/le_chiffre_32
 - [x] sst60
 - [x] sst80
-- [ ] twoyo
+- [x] twoyo
 - [ ] typface/cosmic_sans
 - [ ] wolfjaw
