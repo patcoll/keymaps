@@ -51,7 +51,7 @@ See CLAUDE.md for migration guide.
 - [x] relic
 - [x] serendipity
 - [x] sporkus/le_chiffre_32
-- [ ] sst60
+- [x] sst60
 - [ ] sst80
 - [ ] twoyo
 - [ ] typface/cosmic_sans
