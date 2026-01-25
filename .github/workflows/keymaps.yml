@@ -117,10 +117,10 @@ jobs:
       - name: Install QMK CLI
         run: python3 -m pip install qmk
 
-      # - name: Install QMK build dependencies
-      #   run: |
-      #     cd ${{ github.workspace }}/working_area/qmk_firmware
-      #     sudo util/qmk_install.sh -y
+      - name: Install QMK build dependencies
+        run: |
+          cd ${{ github.workspace }}/working_area/qmk_firmware
+          sudo util/qmk_install.sh -y
 
       - name: Sync keyboard
         run: mise run sync "${{ matrix.keyboard }}"
