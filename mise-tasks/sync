@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Sync firmware and keymaps for one keyboard to QMK_HOME"
-#MISE usage="sync <keyboard>"
-#MISE arg="keyboard"
-
+#USAGE arg "<keyboard>"
 set -e
 
 kb="$1"

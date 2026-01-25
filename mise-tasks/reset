@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
 #MISE description="Reset a keyboard's firmware in QMK_HOME (only for keyboards with custom firmware)"
-#MISE usage="reset <keyboard>"
-#MISE arg="keyboard"
-
+#USAGE arg "<keyboard>"
+set -euo pipefail
 
 kb="$1"
 

@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
 #MISE description="Remove a keyboard's firmware in QMK_HOME"
-#MISE usage="remove <keyboard>"
-#MISE arg="keyboard"
-
-set -e
+#USAGE arg "<keyboard>"
+set -euo pipefail
 
 kb="$1"
 
