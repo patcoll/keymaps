@@ -48,7 +48,7 @@ See CLAUDE.md for migration guide.
 - [x] plop
 - [x] qaz_rp2040
 - [x] qezberry
-- [ ] relic
+- [x] relic
 - [ ] serendipity
 - [ ] sporkus/le_chiffre_32
 - [ ] sst60
