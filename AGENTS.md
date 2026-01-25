@@ -1,5 +1,7 @@
 # QMK Keymaps Project
 
+Note: `CLAUDE.md` is a symlink to `AGENTS.md`. Edit `AGENTS.md` directly.
+
 ## Repository Structure
 
 ```
