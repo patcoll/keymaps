@@ -12,7 +12,7 @@ See CLAUDE.md for migration guide.
 - [x] alphawilly
 - [x] bully
 - [x] bully2040
-- [ ] ca66r3
+- [x] ca66r3
 - [ ] caravan2
 - [ ] cisne
 - [ ] cool536lc
