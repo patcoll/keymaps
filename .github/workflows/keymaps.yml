@@ -43,9 +43,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install mise
-        uses: jdx/mise-action@v3
-
       - name: Cache QMK firmware
         id: cache-qmk
         uses: actions/cache@v4
@@ -53,46 +50,28 @@ jobs:
           path: working_area/qmk_firmware
           key: qmk-${{ hashFiles('mise-tasks/setup') }}
 
-      - name: Cache pip packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: pip-qmk-${{ hashFiles('mise-tasks/setup') }}
-
-      - name: Install QMK CLI
-        if: steps.cache-qmk.outputs.cache-hit != 'true'
-        run: python3 -m pip install qmk
-
-      - name: Setup QMK
-        if: steps.cache-qmk.outputs.cache-hit != 'true'
-        run: mise run setup
-
-      - name: Cache QMK build dependencies
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: build-essential clang-format diffutils gcc git unzip wget zip python3-pip binutils-avr gcc-avr avr-libc binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi avrdude dfu-programmer dfu-util teensy-loader-cli libhidapi-hidraw0 libusb-dev picolibc-riscv64-unknown-elf gcc-riscv64-unknown-elf binutils-riscv64-unknown-elf
-          version: 1.0
-          execute_install_scripts: true
-
-      - name: Install QMK build dependencies
+      - name: Clone QMK firmware
         if: steps.cache-qmk.outputs.cache-hit != 'true'
         run: |
-          cd ${{ github.workspace }}/working_area/qmk_firmware
-          sudo util/qmk_install.sh -y
+          git clone --depth 1 --branch 0.31.9 \
+            https://github.com/qmk/qmk_firmware.git working_area/qmk_firmware
+          cd working_area/qmk_firmware
+          git submodule update --init --recursive --depth 1
 
   build:
     needs: [lint, matrix, setup]
     runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
     strategy:
       fail-fast: false
       max-parallel: 8
       matrix:
         include: ${{ fromJson(needs.matrix.outputs.keyboards) }}
+    env:
+      QMK_HOME: ${{ github.workspace }}/working_area/qmk_firmware
+      QMK_USERSPACE: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install mise
-        uses: jdx/mise-action@v3
 
       - name: Restore QMK firmware cache
         uses: actions/cache@v4
@@ -101,32 +80,13 @@ jobs:
           key: qmk-${{ hashFiles('mise-tasks/setup') }}
           fail-on-cache-miss: true
 
-      - name: Restore QMK build dependencies
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: build-essential clang-format diffutils gcc git unzip wget zip python3-pip binutils-avr gcc-avr avr-libc binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi avrdude dfu-programmer dfu-util teensy-loader-cli libhidapi-hidraw0 libusb-dev picolibc-riscv64-unknown-elf gcc-riscv64-unknown-elf binutils-riscv64-unknown-elf
-          version: 1.0
-          execute_install_scripts: true
-
-      - name: Restore pip cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: pip-qmk-${{ hashFiles('mise-tasks/setup') }}
-
-      - name: Install QMK CLI
-        run: python3 -m pip install qmk
-
-      - name: Install QMK build dependencies
-        run: |
-          cd ${{ github.workspace }}/working_area/qmk_firmware
-          sudo util/qmk_install.sh -y
-
       - name: Sync keyboard
-        run: mise run sync "${{ matrix.keyboard }}"
+        run: ./mise-tasks/sync "${{ matrix.keyboard }}"
 
       - name: Build ${{ matrix.keyboard }}
-        run: mise run qmk compile -kb "${{ matrix.keyboard }}" -km "${{ matrix.keymap }}"
+        run: |
+          cd "$QMK_HOME"
+          qmk compile -kb "${{ matrix.keyboard }}" -km "${{ matrix.keymap }}"
 
       - uses: actions/upload-artifact@v4
         with:

@@ -267,4 +267,6 @@ This will re-clone the firmware at the new version and re-sync all keyboards.
 
 ## CI Notes
 
-The GitHub Actions workflow (`.github/workflows/keymaps.yml`) uses `awalsh128/cache-apt-pkgs-action` to pre-cache apt packages for faster builds. The `qmk_install.sh` step still runs to ensure all dependencies are properly installed, but the cached packages make it faster.
+The GitHub Actions workflow (`.github/workflows/keymaps.yml`) uses the official `ghcr.io/qmk/qmk_cli` container for build jobs. This container includes all QMK toolchains (ARM, AVR, RISC-V) and the QMK CLI pre-installed, eliminating dependency installation overhead.
+
+The mise task scripts (`mise-tasks/*`) are executed directly in CI without mise installed - they're just bash scripts. The environment variables (`QMK_HOME`, `QMK_USERSPACE`) that mise.toml would normally provide are set explicitly in the workflow.
