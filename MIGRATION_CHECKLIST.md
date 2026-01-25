@@ -54,5 +54,5 @@ See CLAUDE.md for migration guide.
 - [x] sst60
 - [x] sst80
 - [x] twoyo
-- [ ] typface/cosmic_sans
+- [x] typface/cosmic_sans
 - [ ] wolfjaw
