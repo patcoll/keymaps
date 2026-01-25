@@ -12,7 +12,14 @@
     "usb": {
         "vid": "0x0777",
         "pid": "0x0001",
-        "device_version": "1.0.0"
+        "device_version": "1.0.0",
+        "polling_interval": 1
+    },
+    "qmk": {
+        "locking": {
+            "enabled": true,
+            "resync": true
+        }
     },
     "features": {
         "bootmagic": true,
@@ -71,5 +78,5 @@
                 { "matrix": [3, 10], "w": 1.25, "x": 12.25, "y": 3.0 }
             ]
         }
-    }    
+    }
 }
