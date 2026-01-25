@@ -11,7 +11,7 @@ See CLAUDE.md for migration guide.
 - [x] alphalpha_plus
 - [x] alphawilly
 - [x] bully
-- [ ] bully2040
+- [x] bully2040
 - [ ] ca66r3
 - [ ] caravan2
 - [ ] cisne

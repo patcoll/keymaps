@@ -1,3 +1,0 @@
-ENCODER_ENABLE = yes
-ALLOW_WARNINGS = yes
-
