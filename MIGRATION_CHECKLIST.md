@@ -38,7 +38,7 @@ See CLAUDE.md for migration guide.
 - [x] minisub
 - [x] monorail
 - [x] monorail2
-- [ ] nachie/evelyn
+- [x] nachie/evelyn
 - [ ] nachie/syndrome
 - [ ] oc3anograph3r
 - [ ] oracle
