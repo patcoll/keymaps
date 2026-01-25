@@ -25,8 +25,8 @@ See CLAUDE.md for migration guide.
 - [x] grouper
 - [x] haitun2040
 - [x] handwired/patcoll/agony
-- [ ] handwired/patcoll/piedmont
-- [ ] infernum
+- [x] handwired/patcoll/piedmont
+- [x] infernum
 - [ ] kawaii
 - [x] lazydesigners/apricot
 - [ ] lazydesigners/tk40x
