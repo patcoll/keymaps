@@ -6,7 +6,7 @@ See CLAUDE.md for migration guide.
 
 ## Keyboards
 
-- [ ] 3999
+- [x] 3999
 - [ ] 45_ats_hot
 - [ ] alphalpha_plus
 - [ ] alphawilly
