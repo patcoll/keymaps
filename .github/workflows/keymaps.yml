@@ -156,3 +156,27 @@ jobs:
             ${{ github.workspace }}/*.bin
             ${{ github.workspace }}/*.hex
             ${{ github.workspace }}/*.uf2
+
+  collect:
+    needs: [build]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: firmware-batch-*
+          path: firmware
+          merge-multiple: true
+
+      - name: List firmware files
+        run: ls -la firmware/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: firmware/*
+
+      - name: Delete batch artifacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: firmware-batch-*
