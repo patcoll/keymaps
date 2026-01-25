@@ -16,15 +16,8 @@ fi
 
 # Sync firmware if available
 if [ -d "firmware/$kb" ]; then
-  # Find the Makefile target for this keyboard
-  target=$(grep -B3 "firmware/$kb/" Makefile | grep "^\.PHONY:" | sed 's/\.PHONY: //')
-
-  if [ -z "$target" ]; then
-    echo "Warning: No Makefile target found for '$kb', skipping firmware sync"
-  else
-    echo "Syncing firmware for $kb (target: $target)..."
-    make "$target"
-  fi
+	mkdir -p ${QMK_HOME}/keyboards/$kb
+	rsync -az firmware/$kb/ ${QMK_HOME}/keyboards/$kb/
 else
   echo "No custom firmware for $kb, skipping firmware sync"
 fi

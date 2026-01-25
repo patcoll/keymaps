@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+#MISE description="Remove a keyboard's firmware in QMK_HOME"
+#MISE usage="remove <keyboard>"
+#MISE arg="keyboard"
+
+set -e
+
+kb="$1"
+
+if [ -z "$kb" ]; then
+  echo "Usage: mise run reset <keyboard>"
+  echo "Example: mise run reset handwired/patcoll/agony"
+  echo ""
+  echo "Keyboards with custom firmware:"
+  mise run firmware:list
+  exit 1
+fi
+
+# Validate keyboard is in firmware task output
+if ! mise run firmware:list | grep -qx "$kb"; then
+  echo "Error: '$kb' is not a valid keyboard with custom firmware"
+  echo ""
+  echo "Keyboards with custom firmware:"
+  mise run firmware:list
+  exit 1
+fi
+
+target="$QMK_HOME/keyboards/$kb"
+
+if [ -d "$target" ]; then
+  echo "Removing $target"
+  rm -rf "$target"
+else
+  echo "Warning: $target does not exist (will be created by sync)"
+fi
