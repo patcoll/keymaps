@@ -29,13 +29,20 @@ jobs:
         id: set-matrix
         run: |
           # Parse keymaps file into JSON array of {keyboard, keymap, artifact_name} objects
+          # then batch them into groups of 10
           keyboards=$(grep -v '^#' keymaps | grep -v '^//' | grep -v '^$' | while read -r line; do
             kb=$(echo "$line" | awk '{print $1}')
             km=$(echo "$line" | awk '{print $2}')
             km="${km:-patcoll}"
             artifact_name=$(echo "${kb}-${km}" | tr '/' '_')
             echo "{\"keyboard\":\"$kb\",\"keymap\":\"$km\",\"artifact_name\":\"$artifact_name\"}"
-          done | jq -s -c '.')
+          done | jq -s -c '
+            # Split into batches of 16
+            [range(0; length; 16) as $i | {
+              batch_id: ($i / 16 | floor),
+              keyboards: .[$i:$i+16]
+            }]
+          ')
           echo "keyboards=$keyboards" >> "$GITHUB_OUTPUT"
 
   setup:
@@ -122,16 +129,91 @@ jobs:
           cd ${{ github.workspace }}/working_area/qmk_firmware
           sudo util/qmk_install.sh -y
 
-      - name: Sync keyboard
-        run: mise run sync "${{ matrix.keyboard }}"
-
-      - name: Build ${{ matrix.keyboard }}
-        run: mise run qmk compile -kb "${{ matrix.keyboard }}" -km "${{ matrix.keymap }}"
+      - name: Sync and build keyboards
+        env:
+          KEYBOARDS_JSON: ${{ toJson(matrix.keyboards) }}
+        run: |
+          failed=0
+          echo "$KEYBOARDS_JSON" | jq -c '.[]' | while read -r item; do
+            keyboard=$(echo "$item" | jq -r '.keyboard')
+            keymap=$(echo "$item" | jq -r '.keymap')
+            echo "::group::Building $keyboard:$keymap"
+            if ! mise run sync "$keyboard" || ! mise run qmk compile -kb "$keyboard" -km "$keymap"; then
+              echo "::error::Failed to build $keyboard:$keymap"
+              echo "1" > /tmp/build_failed
+            fi
+            echo "::endgroup::"
+          done
+          if [ -f /tmp/build_failed ]; then
+            exit 1
+          fi
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: firmware-${{ matrix.artifact_name }}
+          name: firmware-batch-${{ matrix.batch_id }}
           path: |
             ${{ github.workspace }}/*.bin
             ${{ github.workspace }}/*.hex
             ${{ github.workspace }}/*.uf2
+
+  collect:
+    needs: [build]
+    if: always()
+    runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.list.outputs.files }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: firmware-batch-*
+          path: firmware
+          merge-multiple: true
+
+      - name: List firmware files
+        id: list
+        run: |
+          files=$(ls firmware/ 2>/dev/null | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+          echo "Found files: $files"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: firmware/*
+
+      - name: Delete batch artifacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: firmware-batch-*
+
+  upload-individual:
+    needs: [collect]
+    if: always() && needs.collect.outputs.files != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file: ${{ fromJson(needs.collect.outputs.files) }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: firmware
+
+      - name: Get artifact name
+        id: name
+        run: echo "name=$(echo '${{ matrix.file }}' | sed 's/\.[^.]*$//')" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.name.outputs.name }}
+          path: ${{ matrix.file }}
+
+  cleanup:
+    needs: [upload-individual]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete firmware artifact
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: firmware
