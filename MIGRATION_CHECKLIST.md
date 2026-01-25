@@ -46,7 +46,7 @@ See CLAUDE.md for migration guide.
 - [x] oxymoron
 - [x] paintbrush_avr
 - [x] plop
-- [ ] qaz_rp2040
+- [x] qaz_rp2040
 - [ ] qezberry
 - [ ] relic
 - [ ] serendipity
