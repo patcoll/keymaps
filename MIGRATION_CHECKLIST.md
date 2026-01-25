@@ -31,7 +31,7 @@ See CLAUDE.md for migration guide.
 - [x] lazydesigners/apricot
 - [x] lazydesigners/tk40x
 - [x] m0ii0_alpha
-- [ ] m0ii040pcb
+- [x] m0ii040pcb
 - [ ] madeline
 - [ ] matthewdias/rescue_truck
 - [ ] menhir
