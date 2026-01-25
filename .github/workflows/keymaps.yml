@@ -18,10 +18,13 @@ jobs:
       - name: Lint shell scripts
         run: mise run lint
 
+      - name: Install QMK CLI
+        run: python3 -m pip install qmk
+
       - name: Setup QMK
         run: mise run setup
 
-      - name: Install QMK dependencies
+      - name: Install QMK build dependencies
         run: |
           cd ${{ github.workspace }}/working_area/qmk_firmware
           sudo util/qmk_install.sh -y
