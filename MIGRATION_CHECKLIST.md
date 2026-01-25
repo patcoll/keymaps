@@ -49,7 +49,7 @@ See CLAUDE.md for migration guide.
 - [x] qaz_rp2040
 - [x] qezberry
 - [x] relic
-- [ ] serendipity
+- [x] serendipity
 - [ ] sporkus/le_chiffre_32
 - [ ] sst60
 - [ ] sst80
