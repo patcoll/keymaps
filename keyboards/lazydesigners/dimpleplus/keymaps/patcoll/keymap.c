@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _________________MOUSE_L1__________________, _________________MOUSE_R1__________________, KC_PSCR,
   _______, _________________MOUSE_L2__________________, _________________MOUSE_R2__________________, _______,
   _______, _________________MOUSE_L3__________________, _________________MOUSE_R3__________________,
-  _______, KC_BTN1, KC_BTN1, KC_BTN1,                   KC_BTN1, __MOUSE_R3_ARROW_KEYS__
+  _______, MS_BTN1, MS_BTN1, MS_BTN1,                   MS_BTN1, __MOUSE_R3_ARROW_KEYS__
 ),
 };
 

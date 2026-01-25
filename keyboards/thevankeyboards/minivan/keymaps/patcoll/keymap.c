@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _________________MOUSE_L1__________________, _________________MOUSE_R1__________________, KC_PSCR,
   _______, _________________MOUSE_L2__________________, _________________MOUSE_R2__________________, _______,
   _______, _________________MOUSE_L3__________________, _________________MOUSE_R3_ARROWS___________, _______,
-  _______, KC_BTN1, KC_BTN1, KC_BTN1,                   KC_BTN1, KC_BTN2, __MOUSE_R3_ARROW_KEYS__
+  _______, MS_BTN1, MS_BTN1, MS_BTN1,                   MS_BTN1, MS_BTN2, __MOUSE_R3_ARROW_KEYS__
 ),
 };
 
@@ -111,9 +111,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*  */
 /* [_MOUSE] = LAYOUT_arrow_command( #<{(| Q |)}># */
 /*   _______,  _______, _______, _______, _______, _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, KC_PSCR, */
-/*   _______, _______, _______, _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_U,  KC_MS_R, _______, _______, */
-/*   _______, _______, _______, _______, _______, _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_MS_U, _______, */
-/*   QK_BOOT,   _______, KC_BTN1, KC_BTN1,     KC_BTN1,               KC_BTN1, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_R */
+/*   _______, _______, _______, _______, _______, _______, MS_LEFT, MS_DOWN, MS_UP,  MS_RGHT, _______, _______, */
+/*   _______, _______, _______, _______, _______, _______, MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, MS_UP, _______, */
+/*   QK_BOOT,   _______, MS_BTN1, MS_BTN1,     MS_BTN1,               MS_BTN1, MS_BTN2, MS_LEFT, MS_DOWN, MS_RGHT */
 /* ), */
 /*  */
 /*  */
@@ -151,9 +151,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*  */
 /* LAYOUT_arrow_command( #<{(| Q |)}># */
 /*   _______,  _______, _______, _______, _______, _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, KC_PSCR, */
-/*   _______, _______, _______, _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_U,  KC_MS_R, _______, _______, */
-/*   _______, _______, _______, _______, _______, _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_MS_U, _______, */
-/*   _______, _______, _______, KC_BTN1, KC_BTN1,                   KC_BTN1, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_R */
+/*   _______, _______, _______, _______, _______, _______, MS_LEFT, MS_DOWN, MS_UP,  MS_RGHT, _______, _______, */
+/*   _______, _______, _______, _______, _______, _______, MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, MS_UP, _______, */
+/*   _______, _______, _______, MS_BTN1, MS_BTN1,                   MS_BTN1, MS_BTN2, MS_LEFT, MS_DOWN, MS_RGHT */
 /* ), */
 /* }; */
 
