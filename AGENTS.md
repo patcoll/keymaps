@@ -4,7 +4,7 @@
 
 ```
 keymaps/
-├── firmware/           # Canonical keyboard definitions (copied to $QMK_HOME during setup)
+├── firmware/           # Canonical keyboard definitions (synced to $QMK_HOME via sync tasks)
 │   └── lazydesigners/
 │       └── apricot/    # keyboard.json, apricot.h, apricot.c
 ├── keyboards/          # Keymaps for keyboards
@@ -14,14 +14,16 @@ keymaps/
 │               └── patcoll/
 ├── users/              # User-specific keymap code (shared across keyboards)
 │   └── patcoll/
-└── keymaps_qmk/        # $QMK_HOME - Working QMK firmware (external, not in repo)
+├── working_area/       # $QMK_HOME lives here (external, not in repo)
+│   └── qmk_firmware/
+└── qmk.json            # QMK external userspace config
 ```
 
 **Key directories:**
-- `firmware/` - Custom keyboard definitions. These override upstream QMK keyboards during setup.
+- `firmware/` - Custom keyboard definitions. Synced to QMK_HOME via `mise run sync`.
 - `keyboards/` - Keymaps that reference keyboards (either from firmware/ or upstream QMK).
-- `users/` - Shared user code (macros, combos, tap behaviors, etc.).
-- `$QMK_HOME` (keymaps_qmk/) - Working copy of QMK firmware. Gets cloned from upstream, then files from `firmware/` and `keyboards/` are copied in during setup.
+- `users/` - Shared user code (macros, combos, tap behaviors, etc.). This repo is configured as a QMK external userspace.
+- `working_area/qmk_firmware/` - Working copy of QMK firmware (cloned via `mise run setup`).
 
 **Key files:**
 - `keymaps` - Canonical list of keyboards we care about. Used by build system.
@@ -33,7 +35,7 @@ mise run firmware:list
 
 ## Setup
 
-This project uses `uv` for Python dependency management and `mise` for task automation.
+This project uses `uv` for Python dependency management and `mise` for task automation. It also uses QMK's [external userspace](https://docs.qmk.fm/newbs_external_userspace) feature.
 
 ### Initial Setup
 
@@ -44,24 +46,39 @@ This project uses `uv` for Python dependency management and `mise` for task auto
 
 2. **Clone QMK firmware and install its dependencies**:
    ```bash
-   uv run bin/init-qmk
+   mise run setup
    ```
 
-The `init-qmk` script will:
-- Clone the QMK firmware repository to `keymaps_qmk/` (configured via `QMK_HOME`)
+3. **Sync keyboards and keymaps**:
+   ```bash
+   mise run sync-all
+   ```
+
+The setup task will:
+- Clone the QMK firmware repository to `working_area/qmk_firmware/`
 - Install QMK firmware Python dependencies into the uv-managed virtual environment
+
+The sync-all task will:
+- Rsync custom firmware from `firmware/` to QMK_HOME
+- Symlink keymaps from `keyboards/` into QMK_HOME
 
 ### Environment Variables
 
-- `QMK_HOME`: Points to `../keymaps_qmk` (defined in `mise.toml`)
+- `QMK_HOME`: Points to `working_area/qmk_firmware` (defined in `mise.toml`)
+- `QMK_USERSPACE`: Points to this repo root (enables external userspace for `users/` directory)
 
 ## Available Tasks
 
 Use `mise run <task>` to execute:
 
-- **`mise run setup`** - Initialize QMK environment (run after teardown)
-- **`mise run teardown`** - Tear down QMK environment (requires setup to rebuild)
-- **`mise run reset <keyboard>`** - Reset a keyboard's firmware in QMK_HOME (only for keyboards with custom firmware in `firmware/`)
+- **`mise run setup`** - Clone QMK firmware and install dependencies (run after teardown)
+- **`mise run teardown`** - Remove QMK firmware directory (requires setup to rebuild)
+- **`mise run sync <keyboard>`** - Sync firmware and keymaps for one keyboard to QMK_HOME
+- **`mise run sync-all`** - Sync all keyboards listed in `keymaps` file
+- **`mise run reset <keyboard>`** - Remove and re-sync a keyboard (only for keyboards with custom firmware)
+- **`mise run remove <keyboard>`** - Remove a keyboard's firmware from QMK_HOME
+- **`mise run clean`** - Run `qmk clean -a` to clean build artifacts
+- **`mise run test`** - Build all keymaps to verify they compile
 - **`mise run qmk <command>`** - Run any QMK CLI command in $QMK_HOME
 
 ### Examples
@@ -92,17 +109,23 @@ mise run qmk flash -kb <keyboard> -km <keymap>
 
 ## Important Build Rules
 
-**CRITICAL**: Always run `mise run setup` after `mise run teardown`. The setup command initializes the QMK environment and is required for builds to work.
+**CRITICAL**: After `mise run teardown`, you must run both `mise run setup` and `mise run sync-all` before builds will work.
 
 ```bash
-# Correct workflow
+# Correct workflow after teardown
 mise run teardown
-mise run setup    # REQUIRED after clean
+mise run setup      # Clone QMK firmware
+mise run sync-all   # Sync keyboards and keymaps
 mise run qmk compile -kb <keyboard> -km <keymap>
 
 # Incorrect - will fail
 mise run teardown
-mise run qmk compile -kb <keyboard> -km <keymap>  # ERROR: build will not work
+mise run qmk compile -kb <keyboard> -km <keymap>  # ERROR: no QMK firmware
+
+# Also incorrect - keyboard not synced
+mise run teardown
+mise run setup
+mise run qmk compile -kb <keyboard> -km <keymap>  # ERROR: keyboard not found
 ```
 
 ## Keyboard Migrations
@@ -121,7 +144,7 @@ This keyboard has been migrated from legacy format to modern keyboard.json forma
 - `config.h` - Merged into keyboard.json
 - `rules.mk` - Merged into keyboard.json
 
-**How it works:** The `firmware/` directory is the canonical source. During `mise run setup`, these files are copied to `$QMK_HOME/keyboards/`, overriding any upstream QMK files. QMK auto-generates the LAYOUT macro from keyboard.json at compile time.
+**How it works:** The `firmware/` directory is the canonical source. Running `mise run sync <keyboard>` rsyncs these files to `$QMK_HOME/keyboards/`, overriding any upstream QMK files. Keymaps from `keyboards/` are symlinked into QMK_HOME. QMK auto-generates the LAYOUT macro from keyboard.json at compile time.
 
 ## Migration Guide: Legacy to keyboard.json
 
@@ -230,7 +253,12 @@ mise run qmk compile -kb <keyboard> -km <keymap>
 
 To switch QMK firmware versions:
 
-1. Edit `bin/init-qmk` and uncomment the desired version
-2. Run: `uv run bin/init-qmk`
+1. Edit `mise-tasks/setup` and change the `qmk clone -b <version>` line
+2. Run:
+   ```bash
+   mise run teardown
+   mise run setup
+   mise run sync-all
+   ```
 
-This will re-clone the firmware and sync its Python dependencies.
+This will re-clone the firmware at the new version and re-sync all keyboards.
