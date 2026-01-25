@@ -60,6 +60,13 @@ jobs:
         if: steps.cache-qmk.outputs.cache-hit != 'true'
         run: mise run setup
 
+      - name: Cache QMK build dependencies
+        if: steps.cache-qmk.outputs.cache-hit != 'true'
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: build-essential clang-format diffutils gcc git unzip wget zip python3-pip binutils-avr gcc-avr avr-libc binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi avrdude dfu-programmer dfu-util teensy-loader-cli libhidapi-hidraw0 libusb-dev
+          version: 1.0
+
       - name: Install QMK build dependencies
         if: steps.cache-qmk.outputs.cache-hit != 'true'
         run: |
