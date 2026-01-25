@@ -1,40 +1,48 @@
 {
-    "manufacturer": "KiserDesigns",
     "keyboard_name": "Haitun2040",
+    "manufacturer": "KiserDesigns",
     "maintainer": "NCKiser",
+    "url": "",
+    "processor": "RP2040",
     "bootloader": "rp2040",
     "diode_direction": "COL2ROW",
-    "encoder": {
-        "enabled": true,
-        "rotary": [
-            {"pin_a": "GP4", "pin_b": "GP5"}
-        ]
-    },
-    "features": {
-        "bootmagic": true,
-        "command": false,
-        "console": false,
-        "extrakey": true,
-        "mousekey": true,
-        "nkro": true
+    "usb": {
+        "vid": "0x4B44",
+        "pid": "0x4874",
+        "device_version": "0.0.1"
     },
     "matrix_pins": {
         "cols": ["GP17", "GP13", "GP12", "GP0", "GP11", "GP10", "GP9", "GP8", "GP6", "GP19", "GP2", "GP3"],
         "rows": ["GP14", "GP18", "GP15", "GP1"]
     },
-    "processor": "RP2040",
-    "rgb_matrix": {
-        "driver": "ws2812",
-        "led_count": 1
-    },
-    "usb": {
-        "device_version": "0.0.1",
-        "pid": "0x4874",
-        "vid": "0x4B44"
+    "encoder": {
+        "rotary": [
+            {"pin_a": "GP4", "pin_b": "GP5"}
+        ]
     },
     "ws2812": {
         "driver": "vendor",
         "pin": "GP26"
+    },
+    "rgb_matrix": {
+        "driver": "ws2812",
+        "led_count": 1
+    },
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "encoder": true,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true,
+        "rgb_matrix": true
+    },
+    "qmk": {
+        "locking": {
+            "enabled": true,
+            "resync": true
+        }
     },
     "layouts": {
         "LAYOUT": {
