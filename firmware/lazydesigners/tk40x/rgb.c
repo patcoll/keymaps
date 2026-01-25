@@ -10,7 +10,7 @@ led_config_t g_led_config = {
          {   0  ,    0  ,    1  ,   2   ,   3   ,   4   ,    5   ,   6   ,   7   ,    7             },
          {   0  ,    0  ,    1  ,           3   ,   4   ,            6   ,   7   ,    7             }
     },
-    // LED Index to Physical Positon
+    // LED Index to Physical Position
     {
         { 0  , 8  },
         { 32, 16 },
@@ -24,9 +24,5 @@ led_config_t g_led_config = {
     //  LED Index to Flag
     { 1, 1, 1, 1, 1, 1, 1, 1 }
 };
-
-#define RGB_MATRIX_TYPING_HEATMAP_SPREAD 80
-#define RGB_MATRIX_TYPING_HEATMAP_AREA_LIMIT 32
-
 
 #endif

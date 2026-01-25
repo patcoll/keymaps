@@ -29,7 +29,7 @@ See CLAUDE.md for migration guide.
 - [x] infernum
 - [x] kawaii
 - [x] lazydesigners/apricot
-- [ ] lazydesigners/tk40x
+- [x] lazydesigners/tk40x
 - [ ] m0ii0_alpha
 - [ ] m0ii040pcb
 - [ ] madeline

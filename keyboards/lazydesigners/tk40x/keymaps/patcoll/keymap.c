@@ -47,7 +47,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_wrapper(
-  KC_MUTE, RGB_TOG,
+  KC_MUTE, RM_TOGG,
   _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,
   _________________QWERTY_L2_________________, _________________QWERTY_R2_________________,
   _________________QWERTY_L3_________________, _________________QWERTY_R3_________________,
