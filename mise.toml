@@ -1,4 +1,5 @@
 [tools]
+python = "3.12"
 shellcheck = "latest"
 uv = "latest"
 
