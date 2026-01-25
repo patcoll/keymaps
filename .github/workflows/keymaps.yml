@@ -29,7 +29,7 @@ jobs:
         id: set-matrix
         run: |
           # Parse keymaps file into JSON array of {keyboard, keymap, artifact_name} objects
-          # then batch them into groups of 10
+          # then batch them into groups of 16
           keyboards=$(grep -v '^#' keymaps | grep -v '^//' | grep -v '^$' | while read -r line; do
             kb=$(echo "$line" | awk '{print $1}')
             km=$(echo "$line" | awk '{print $2}')
@@ -40,6 +40,7 @@ jobs:
             # Split into batches of 16
             [range(0; length; 16) as $i | {
               batch_id: ($i / 16 | floor),
+              batch_name: (.[$i:$i+16] | map("\(.keyboard):\(.keymap)") | join(", ")),
               keyboards: .[$i:$i+16]
             }]
           ')
@@ -88,6 +89,7 @@ jobs:
           sudo util/qmk_install.sh -y
 
   build:
+    name: build (${{ matrix.batch_id }}, ${{ matrix.batch_name }})
     needs: [lint, matrix, setup]
     runs-on: ubuntu-latest
     strategy:
