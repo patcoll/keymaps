@@ -1,5 +1,6 @@
 [tools]
 shellcheck = "latest"
+uv = "latest"
 
 [env]
 QMK_HOME = "{{config_root}}/working_area/qmk_firmware"
