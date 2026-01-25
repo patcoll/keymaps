@@ -52,7 +52,7 @@ See CLAUDE.md for migration guide.
 - [x] serendipity
 - [x] sporkus/le_chiffre_32
 - [x] sst60
-- [ ] sst80
+- [x] sst80
 - [ ] twoyo
 - [ ] typface/cosmic_sans
 - [ ] wolfjaw
