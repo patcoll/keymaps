@@ -47,7 +47,7 @@ See CLAUDE.md for migration guide.
 - [x] paintbrush_avr
 - [x] plop
 - [x] qaz_rp2040
-- [ ] qezberry
+- [x] qezberry
 - [ ] relic
 - [ ] serendipity
 - [ ] sporkus/le_chiffre_32
