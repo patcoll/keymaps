@@ -43,7 +43,7 @@ See CLAUDE.md for migration guide.
 - [x] oc3anograph3r
 - [x] oracle
 - [x] orbital
-- [ ] oxymoron
+- [x] oxymoron
 - [ ] paintbrush_avr
 - [ ] plop
 - [ ] qaz_rp2040
