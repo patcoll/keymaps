@@ -35,8 +35,8 @@ See CLAUDE.md for migration guide.
 - [x] madeline
 - [x] matthewdias/rescue_truck
 - [x] menhir
-- [ ] minisub
-- [ ] monorail
+- [x] minisub
+- [x] monorail
 - [ ] monorail2
 - [ ] nachie/evelyn
 - [ ] nachie/syndrome
