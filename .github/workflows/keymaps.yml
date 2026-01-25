@@ -15,11 +15,8 @@ jobs:
       - name: Install mise
         uses: jdx/mise-action@v2
 
-      - name: Install shellcheck
-        run: sudo apt-get update && sudo apt-get install -y shellcheck
-
       - name: Lint shell scripts
-        run: shellcheck bin/* mise-tasks/* mise-tasks/**/*
+        run: mise run lint
 
       - name: Setup QMK
         run: mise run setup

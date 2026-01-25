@@ -1,3 +1,6 @@
+[tools]
+shellcheck = "latest"
+
 [env]
 QMK_HOME = "{{config_root}}/working_area/qmk_firmware"
 QMK_USERSPACE = "{{config_root}}"

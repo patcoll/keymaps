@@ -4,7 +4,7 @@
 set -e
 
 # Get unique keyboards from keymaps file (first column, skip comments/empty)
-grep -v '^#' keymaps | grep -v '^//' | grep -v '^$' | awk '{print $1}' | sort -u | while read kb; do
+grep -v '^#' keymaps | grep -v '^//' | grep -v '^$' | awk '{print $1}' | sort -u | while read -r kb; do
   echo "=== $kb ==="
   mise run sync "$kb"
   echo ""

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+find bin mise-tasks -type f -executable -exec shellcheck {} +

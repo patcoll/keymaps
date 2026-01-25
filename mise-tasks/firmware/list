@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="List keyboards with custom firmware"
 
-grep -v '^#' keymaps | grep -v '^//' | grep -v '^$' | awk '{print $1}' | while read kb; do
+grep -v '^#' keymaps | grep -v '^//' | grep -v '^$' | awk '{print $1}' | while read -r kb; do
   if [ -d "firmware/$kb" ]; then
     echo "$kb"
   fi
