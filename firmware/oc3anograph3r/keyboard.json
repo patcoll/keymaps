@@ -1,11 +1,21 @@
 {
-    "manufacturer": "KiserDesigns",
     "keyboard_name": "oc3anograph3r",
+    "manufacturer": "KiserDesigns",
     "maintainer": "NCKiser",
+    "url": "",
+    "processor": "RP2040",
     "bootloader": "rp2040",
     "diode_direction": "COL2ROW",
+    "usb": {
+        "vid": "0x4B44",
+        "pid": "0x4FC3",
+        "device_version": "0.0.1"
+    },
+    "matrix_pins": {
+        "cols": ["GP0", "GP1", "GP2", "GP3", "GP4", "GP5", "GP6", "GP7", "GP8", "GP9", "GP10", "GP11"],
+        "rows": ["GP24", "GP25", "GP12", "GP15"]
+    },
     "encoder": {
-        "enabled": true,
         "rotary": [
             {"pin_a": "GP13", "pin_b": "GP14"}
         ]
@@ -14,20 +24,17 @@
         "bootmagic": true,
         "command": false,
         "console": false,
+        "encoder": true,
         "extrakey": true,
         "mousekey": true,
         "nkro": true,
         "oled": true
     },
-    "matrix_pins": {
-        "cols": ["GP0", "GP1", "GP2", "GP3", "GP4", "GP5", "GP6", "GP7", "GP8", "GP9", "GP10", "GP11"],
-        "rows": ["GP24", "GP25", "GP12", "GP15"]
-    },
-    "processor": "RP2040",
-    "usb": {
-        "device_version": "0.0.1",
-        "pid": "0x4FC3",
-        "vid": "0x4B44"
+    "qmk": {
+        "locking": {
+            "enabled": true,
+            "resync": true
+        }
     },
     "layouts": {
         "LAYOUT": {
