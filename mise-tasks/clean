@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+#MISE description="Run QMK clean"
+#MISE dir="{{env.QMK_HOME}}"
+
+make git-submodule
+qmk clean -a

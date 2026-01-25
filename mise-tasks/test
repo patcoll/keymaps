@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#MISE description="Test by building all keymaps"
+
+build-all-keymaps

@@ -2,4 +2,11 @@
 #MISE description="Run QMK CLI commands"
 #MISE dir="{{env.QMK_HOME}}"
 
-uv run qmk "$@"
+# echo QMK_USERSPACE
+# echo $QMK_USERSPACE
+
+# exec uv run -- python -c 'import os; print(os.environ.get("QMK_USERSPACE"))'
+
+# exec uv run -- env QMK_USERSPACE=$QMK_USERSPACE qmk "$@"
+
+exec uv run qmk "$@"

@@ -1,9 +1,0 @@
-#!/bin/bash -ex
-dir=$PWD
-
-if [[ ! -d "${QMK_HOME}" ]]; then
-  echo "${QMK_HOME}" does not exist
-  exit 1
-fi
-
-ln -nfs "$dir/users/patcoll" "${QMK_HOME}/users/patcoll"

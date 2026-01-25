@@ -1,3 +1,4 @@
 [env]
-QMK_HOME = "{{config_root}}/../keymaps_qmk"
+QMK_HOME = "{{config_root}}/working_area/qmk_firmware"
+QMK_USERSPACE = "{{config_root}}"
 _.path = ["{{config_root}}/bin"]

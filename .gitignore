@@ -1,2 +1,4 @@
-/qmk_firmware
 /working_area
+*.bin
+*.hex
+*.uf2

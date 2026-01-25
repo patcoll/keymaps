@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #MISE description="Tear down QMK environment (requires setup to rebuild)"
 
-make clean
+rm -rf "${QMK_HOME}"
