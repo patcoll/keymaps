@@ -32,7 +32,7 @@ See CLAUDE.md for migration guide.
 - [x] lazydesigners/tk40x
 - [x] m0ii0_alpha
 - [x] m0ii040pcb
-- [ ] madeline
+- [x] madeline
 - [ ] matthewdias/rescue_truck
 - [ ] menhir
 - [ ] minisub
