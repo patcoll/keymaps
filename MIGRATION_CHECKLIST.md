@@ -37,7 +37,7 @@ See CLAUDE.md for migration guide.
 - [x] menhir
 - [x] minisub
 - [x] monorail
-- [ ] monorail2
+- [x] monorail2
 - [ ] nachie/evelyn
 - [ ] nachie/syndrome
 - [ ] oc3anograph3r
