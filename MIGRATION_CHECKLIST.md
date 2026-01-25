@@ -55,4 +55,4 @@ See CLAUDE.md for migration guide.
 - [x] sst80
 - [x] twoyo
 - [x] typface/cosmic_sans
-- [ ] wolfjaw
+- [x] wolfjaw
