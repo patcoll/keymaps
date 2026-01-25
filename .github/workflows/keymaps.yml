@@ -40,6 +40,7 @@ jobs:
 
   setup:
     runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
     steps:
       - uses: actions/checkout@v4
 
@@ -48,7 +49,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: working_area/qmk_firmware
-          key: qmk-${{ hashFiles('mise-tasks/setup') }}
+          key: qmk-container-${{ hashFiles('mise-tasks/setup') }}
 
       - name: Clone QMK firmware
         if: steps.cache-qmk.outputs.cache-hit != 'true'
@@ -74,7 +75,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: working_area/qmk_firmware
-          key: qmk-${{ hashFiles('mise-tasks/setup') }}
+          key: qmk-container-${{ hashFiles('mise-tasks/setup') }}
           fail-on-cache-miss: true
 
       - name: Sync keyboard
