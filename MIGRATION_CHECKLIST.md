@@ -30,7 +30,7 @@ See CLAUDE.md for migration guide.
 - [x] kawaii
 - [x] lazydesigners/apricot
 - [x] lazydesigners/tk40x
-- [ ] m0ii0_alpha
+- [x] m0ii0_alpha
 - [ ] m0ii040pcb
 - [ ] madeline
 - [ ] matthewdias/rescue_truck
