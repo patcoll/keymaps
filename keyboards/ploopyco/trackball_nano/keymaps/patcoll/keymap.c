@@ -57,7 +57,7 @@ void keyboard_post_init_keymap(void) {
 	lock_state = host_keyboard_led_state().num_lock;
 }
 
-bool led_update_user(led_t led_state) {
+bool led_update_keymap(led_t led_state) {
 	static uint8_t lock_count = 0;
 	static uint16_t scroll_timer = 0;
 
