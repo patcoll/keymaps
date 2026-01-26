@@ -8,12 +8,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   SFT_TAB, _________________QWERTY_L1_________________, _________________QWERTY_R1_________________, KC_BSPC,
   CTL_ESC, _________________QWERTY_L2_________________, _________________QWERTY_R2_________________, SFT_QUOT,
   KC_LSFT, _________________QWERTY_L3_________________, _________________QWERTY_R3_________________, KC_LSFT,
-  KC_LCTL, KC_HYPR, KC_LGUI, KC_LALT, SFT_SPC,                   RSE_ENT, CTL_ENT, __QWERTY_R4_NORMAL_KEYS_
+  KC_LCTL, KC_HYPR, KC_LGUI, KC_LALT, SFT_SPC,                   RSE_ENT, KC_LCTL, __QWERTY_R4_NORMAL_KEYS_
 ),
 
 [_NAV] = LAYOUT_wrapper(
   KC_LSFT, __________________NAV_L1___________________, __________________NAV_R1___________________, CS_BSPC,
-  MO_NAV,  __________________NAV_L2___________________, __________________NAV_R2___________________, KC_BSLS,
+  _______,  __________________NAV_L2___________________, __________________NAV_R2___________________, KC_BSLS,
   _______, __________________NAV_L3___________________, __________________NAV_R3___________________, _______,
   _______, _______, _______, _______, ALT_TAB,                   ALT_TAB,  _______, __NAV_R4_ARROW_KEYS___
 ),
