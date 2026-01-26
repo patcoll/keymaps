@@ -37,11 +37,11 @@ jobs:
             artifact_name=$(echo "${kb}-${km}" | tr '/' '_')
             echo "{\"keyboard\":\"$kb\",\"keymap\":\"$km\",\"artifact_name\":\"$artifact_name\"}"
           done | jq -s -c '
-            # Split into batches of 16
-            [range(0; length; 16) as $i | {
-              batch_id: ($i / 16 | floor),
-              batch_name: (.[$i:$i+16] | map("\(.keyboard):\(.keymap)") | join(", ")),
-              keyboards: .[$i:$i+16]
+            # Split into batches of 10
+            [range(0; length; 10) as $i | {
+              batch_id: ($i / 10 | floor),
+              batch_name: (.[$i:$i+10] | map("\(.keyboard):\(.keymap)") | join(", ")),
+              keyboards: .[$i:$i+10]
             }]
           ')
           echo "keyboards=$keyboards" >> "$GITHUB_OUTPUT"
