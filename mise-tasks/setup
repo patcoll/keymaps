@@ -19,12 +19,12 @@ set -euo pipefail
 # qmk clone -b vial vial-kb/vial-qmk ${QMK_HOME}
 
 if [[ ! -d "${QMK_HOME}" ]]; then
-  qmk clone -b 0.31.9 qmk/qmk_firmware "${QMK_HOME}"
+  qmk clone -b 0.33.8 qmk/qmk_firmware "${QMK_HOME}"
 else
   echo "${QMK_HOME}" already seems to exist
 fi
 
-uv venv
+uv venv --clear
 
 # Install QMK firmware Python dependencies into uv venv
 uv pip install -r "${QMK_HOME}/requirements.txt"
