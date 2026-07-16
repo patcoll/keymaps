@@ -96,30 +96,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* }; */
 /*  */
 /* void keyboard_post_init_user(void) { */
-/*   setPinOutput(LED0_PIN); */
-/*   setPinOutput(LED1_PIN); */
-/*   setPinOutput(LED2_PIN); */
+/*   gpio_set_pin_output(LED0_PIN); */
+/*   gpio_set_pin_output(LED1_PIN); */
+/*   gpio_set_pin_output(LED2_PIN); */
 /*  */
-/*   writePin(LED0_PIN, 1); */
+/*   gpio_write_pin(LED0_PIN, 1); */
 /* } */
 /*  */
 /* layer_state_t layer_state_set_user(layer_state_t state) { */
 /*     switch (get_highest_layer(state)) { */
 /*     case 1: */
-/*         writePin(LED2_PIN, 1); */
-/*         writePin(LED1_PIN, 0); */
+/*         gpio_write_pin(LED2_PIN, 1); */
+/*         gpio_write_pin(LED1_PIN, 0); */
 /*         break; */
 /*     case 2: */
-/*         writePin(LED2_PIN, 0); */
-/*         writePin(LED1_PIN, 1); */
+/*         gpio_write_pin(LED2_PIN, 0); */
+/*         gpio_write_pin(LED1_PIN, 1); */
 /*         break; */
 /*     case 3: */
-/*         writePin(LED2_PIN, 1); */
-/*         writePin(LED1_PIN, 1); */
+/*         gpio_write_pin(LED2_PIN, 1); */
+/*         gpio_write_pin(LED1_PIN, 1); */
 /*         break; */
 /*     default: //  for any other layers, or the default layer */
-/*         writePin(LED2_PIN, 0); */
-/*         writePin(LED1_PIN, 0); */
+/*         gpio_write_pin(LED2_PIN, 0); */
+/*         gpio_write_pin(LED1_PIN, 0); */
 /*         break; */
 /*     } */
 /*   return state; */

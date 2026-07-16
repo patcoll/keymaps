@@ -69,13 +69,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool led_update_keymap(led_t led_state) {
-  setPinOutput(LED0_PIN);
-  setPinOutput(LED1_PIN);
-  setPinOutput(LED2_PIN);
+  gpio_set_pin_output(LED0_PIN);
+  gpio_set_pin_output(LED1_PIN);
+  gpio_set_pin_output(LED2_PIN);
 
-  writePin(LED0_PIN, 0);
-  writePin(LED1_PIN, 0);
-  writePin(LED2_PIN, 0);
+  gpio_write_pin(LED0_PIN, 0);
+  gpio_write_pin(LED1_PIN, 0);
+  gpio_write_pin(LED2_PIN, 0);
 
   return true;
 }

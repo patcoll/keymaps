@@ -69,10 +69,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 void keyboard_post_init_keymap(void) {
-  setPinOutput(LED0_PIN);
-  setPinOutput(LED1_PIN);
-  setPinOutput(LED2_PIN);
+  gpio_set_pin_output(LED0_PIN);
+  gpio_set_pin_output(LED1_PIN);
+  gpio_set_pin_output(LED2_PIN);
 
-  writePin(LED0_PIN, 1);
+  gpio_write_pin(LED0_PIN, 1);
 }
 
