@@ -1,7 +1,6 @@
 {
   "keyboard_name": "Embrace",
   "manufacturer": "TheVan Keyboards",
-  "url": "",
   "maintainer": "TheVan Keyboards",
   "processor": "atmega32u4",
   "bootloader": "atmel-dfu",

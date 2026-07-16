@@ -1,7 +1,6 @@
 {
     "keyboard_name": "Wolfjaw",
     "manufacturer": "Whitefacemountain",
-    "url": "",
     "maintainer": "qmk",
     "usb": {
         "vid": "0xFEED",

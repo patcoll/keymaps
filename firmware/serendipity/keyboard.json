@@ -2,7 +2,6 @@
     "keyboard_name": "Serendipity",
     "manufacturer": "Dededecline",
     "maintainer": "ojthetiny",
-    "url": "",
     "processor": "RP2040",
     "bootloader": "rp2040",
     "usb": {

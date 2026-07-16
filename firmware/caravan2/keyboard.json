@@ -2,7 +2,6 @@
     "keyboard_name": "CaraVan 2",
     "maintainer": "TheVan Keyboards",
     "manufacturer": "TheVan Keyboards",
-    "url": "",
     "processor": "atmega32u4",
     "bootloader": "atmel-dfu",
     "usb": {

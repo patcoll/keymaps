@@ -1,7 +1,6 @@
 {
     "keyboard_name": "PLOP",
     "manufacturer": "rainkeebs",
-    "url": "",
     "maintainer": "qmk",
     "usb": {
         "vid": "0x726B",

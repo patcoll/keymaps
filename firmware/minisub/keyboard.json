@@ -1,7 +1,6 @@
 {
     "keyboard_name": "Minisub",
     "manufacturer": "Rainkeebs",
-    "url": "",
     "maintainer": "qmk",
     "processor": "atmega32u4",
     "bootloader": "atmel-dfu",

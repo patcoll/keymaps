@@ -2,7 +2,6 @@
     "keyboard_name": "Rescue Truck",
     "manufacturer": "Matthew Dias",
     "maintainer": "Matthew Dias",
-    "url": "",
     "usb": {
         "vid": "0x7274",
         "pid": "0x6D64",

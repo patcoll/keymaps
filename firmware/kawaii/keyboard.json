@@ -1,7 +1,6 @@
 {
     "keyboard_name": "kawaii",
     "manufacturer": "yohewi",
-    "url": "",
     "maintainer": "yohewi",
     "usb": {
         "vid": "0x04D8",

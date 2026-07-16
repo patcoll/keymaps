@@ -1,7 +1,6 @@
 {
   "keyboard_name": "Agony",
   "manufacturer": "Arcalogic",
-  "url": "",
   "maintainer": "patcoll",
   "processor": "atmega32u4",
   "bootloader": "atmel-dfu",

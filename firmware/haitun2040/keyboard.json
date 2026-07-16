@@ -2,7 +2,6 @@
     "keyboard_name": "Haitun2040",
     "manufacturer": "KiserDesigns",
     "maintainer": "NCKiser",
-    "url": "",
     "processor": "RP2040",
     "bootloader": "rp2040",
     "diode_direction": "COL2ROW",

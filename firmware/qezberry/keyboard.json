@@ -1,7 +1,6 @@
 {
     "keyboard_name": "QEZBerry",
     "manufacturer": "QEZ",
-    "url": "",
     "maintainer": "IvoPo",
     "processor": "RP2040",
     "bootloader": "rp2040",

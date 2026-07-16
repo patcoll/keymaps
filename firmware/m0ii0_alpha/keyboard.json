@@ -38,7 +38,6 @@
         ],
         "rows": ["GP28", "GP29", "GP26", "GP27"]
     },
-    "url": "",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0x0000",

@@ -1,7 +1,6 @@
 {
   "keyboard_name": "curio",
   "manufacturer": "projectcain",
-  "url": "",
   "maintainer": "projectcain",
   "processor": "atmega32u4",
   "bootloader": "atmel-dfu",

@@ -1,7 +1,6 @@
 {
     "keyboard_name": "45-ATS",
     "manufacturer": "Nasp",
-    "url": "",
     "maintainer": "Nasp",
     "usb": {
         "vid": "0x7070",

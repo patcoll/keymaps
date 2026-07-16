@@ -2,7 +2,6 @@
     "keyboard_name": "bully2040",
     "manufacturer": "spork",
     "maintainer": "spork",
-    "url": "",
     "bootloader": "rp2040",
     "processor": "RP2040",
     "diode_direction": "COL2ROW",
