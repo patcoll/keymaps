@@ -41,17 +41,21 @@ This project uses `uv` for Python dependency management and `mise` for task auto
 
 ### Initial Setup
 
-1. **Install dependencies**:
+1. **Install the QMK CLI**: Follow the official guide at
+   <https://docs.qmk.fm/cli>. This installs the build prerequisites (compiler
+   toolchains) that `mise run setup` relies on.
+
+2. **Install dependencies**:
    ```bash
    uv sync
    ```
 
-2. **Clone QMK firmware and install its dependencies**:
+3. **Clone QMK firmware and install its dependencies**:
    ```bash
    mise run setup
    ```
 
-3. **Sync keyboards and keymaps**:
+4. **Sync keyboards and keymaps**:
    ```bash
    mise run sync-all
    ```
